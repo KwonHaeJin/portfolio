@@ -55,7 +55,7 @@ function App() {
   },[startAdding, index]);
 
   return (
-    <div className="bg-blue-100 w-screen min-h-screen flex flex-col">
+    <div className="bg-blue-100 w-full overflow-x-hidden scrollbar-hide overflow-auto min-h-screen flex flex-col">
       <div className="w-screen flex flex-col items-start mt-6 ml-4">
         {visibleMessages.length > 0 && (
           <motion.div
@@ -91,12 +91,12 @@ function App() {
       </div>
 {showProfile &&
       <motion.div 
-      className="mt-[45%] flex flex-row h-auto items-center justify-center"
+      className="mt-[45%] flex flex-row h-auto items-center justify-center lg:mt-[15%]"
       initial={{opacity:0, y:50}}
       animate={{opacity:1, y:0}}
       transition={{duration:1, ease:"easeInOut"}}>
         <img src={Profile} className="w-[40%] h-3/2 rounded-2xl md:w-[25%]"></img>
-        <span className="h-[95%] w-[2px] bg-slate-400 ml-4 mr-4"></span>
+        <span className="h-52 w-[2px] bg-slate-500 ml-4 mr-4 md:h-80 lg:h-80"></span>
         <div className="flex-col flex">
           <div className="flex flex-row items-center mb-2 md:mb-16">
             <img src={Contact} className="w-6 h-6 md:w-10 md:h-10"></img>
