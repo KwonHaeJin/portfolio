@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@craco/craco": "^7.1.0",
+    "@fullpage/react-fullpage": "^0.1.48",
     "@lasbe/react-scroll-animation": "^2.0.6",
     "@tailwindcss/vite": "^4.0.6",
     "@testing-library/jest-dom": "^5.17.0",
@@ -16,6 +17,8 @@
     "framer-motion": "^12.4.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-full-page": "^0.1.12",
+    "react-fullpage": "^0.1.19",
     "react-scripts": "5.0.1",
     "tailwind-scrollbar-hide": "^2.0.0",
     "typescript": "^4.9.5",

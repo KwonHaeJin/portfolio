@@ -3,6 +3,9 @@
 *::-webkit-scrollbar {
   display: none
 }
+.fp-watermark {
+  display: none !important;
+}
 @tailwind components;
 @tailwind utilities;
 
