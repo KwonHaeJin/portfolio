@@ -165,31 +165,30 @@ function App() {
               </div>
             </div>
             {/* 두번째 섹션 프로필 */}
-            <div className="section h-screen w-full flex flex-col justify-center items-center">
-              <div className="absolute top-8 left-1/2 transform -translate-x-1/2 justify-start items-start">
+            <div className="section h-screen w-full flex flex-col justify-center items-center xl:flex-row xl:justify-between">
+              <div className="absolute top-8 left-1/2 transform -translate-x-1/2 justify-start items-start xl:top-12 xl:left-4 xl:translate-x-0 ">
                 <motion.div
                   className="flex flex-col justify-start items-start w-full xl:h-96"
                   initial={{ opacity: 0, y: 0 }}
                   animate={animateProfile ? { opacity: 1, y: 50 } : {}}
                   transition={{ duration: 1, ease: "easeOut" }}
                 >
-                  <img src={Profile} className="w-[30vw] h-[18vh] rounded-lg mr-4 mb-5 md:w-[29vw] md:h-[26vh] lg:w-[26vw] lg:h-[24vh] xl:h-[38vh] xl:w-[16vw]"></img>
+                  <img src={Profile} className="w-[30vw] h-[18vh] rounded-lg mr-4 mb-5 md:w-[29vw] md:h-[26vh] lg:w-[26vw] lg:h-[24vh] xl:h-[30vh] xl:w-[12vw] xl:mb-10"></img>
                   <div className="flex-col flex justify-start items-start">
-                    <div className="flex flex-row items-center pb-6 md:mb-16 lg:mb-24 xl:mb-16">
-                      <p className="text-xl font-empha md:text-4xl md:ml-6 ">Contact</p>
-                      <span className="ml-2 w-[61vw] h-[1px] bg-black"></span>
+                    <div className="flex flex-row items-center pb-6 md:mb-16 lg:mb-24 xl:mb-10">
+                      <p className="text-xl font-empha md:text-4xl md:ml-6 xl:text-[36px] xl:ml-0 ">Contact</p>
+                      <span className="ml-2 w-[61vw] h-[1px] bg-black xl:w-[38vw] xl:h-[2px]"></span>
                     </div>
-                    <div className="bg-white rounded-lg w-[82vw] p-2">
-
-                      <div className="flex flex-row md:flex-row lg:flex-row">
+                    <div className="bg-white rounded-lg w-[82vw] p-2 xl:w-[49vw]">
+                      <div className="flex flex-row xl:justify-between xl:mx-5">
                         <p className="text-lg font-semibold -mb-1 md:text-3xl">Tel</p>
                         <p className="text-lg ml-2 mb-1 md:text-3xl md:mb-6  xl:mb-8">010-2109-0228</p>
                       </div>
-                      <div className="flex flex-row md:flex-row lg:flex-row">
+                      <div className="flex flex-row xl:justify-between xl:mx-5">
                         <p className="text-lg font-semibold -mb-1 md:text-3xl">E-mail</p>
                         <p className="text-lg ml-2 mb-1 md:text-3xl md:mb-6 xl:mb-8">hjji0922@naver.com</p>
                       </div>
-                      <div className="flex flex-row md:flex-row lg:flex-row">
+                      <div className="flex flex-row xl:justify-between xl:mx-5">
                         <p className="text-lg font-semibold -mb-1 md:text-3xl">Github</p>
                         <a href="https://github.com/KwonHaeJin" target="_blank" rel="noopener noreferrer" className="underline ml-2 text-lg md:text-3xl">github.com/KwonHaeJin</a>
                       </div>
@@ -198,59 +197,59 @@ function App() {
                 </motion.div>
               </div>
               {showadvantage &&
-                <div className="absolute bottom-20 flex-col justify-start items-start">
+                <div className="absolute bottom-20 flex-col justify-start items-start xl:left-[51.5vw] xl:top-24">
                   <motion.p
-                    className="flex flex-row items-center justify-start w-full pb-6 font-empha text-xl md:text-3xl md:mb-6  xl:mb-8"
+                    className="flex flex-row items-center justify-start w-full pb-6 font-empha text-xl md:text-3xl md:mb-6 xl:mb-8 xl:text-[36px]"
                     initial={{ opacity: 0, x: -50 }}
                     animate={animateProfile ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 1, ease: "easeOut" }}
-                  >Advantage<span className="ml-2 w-[53vw] h-[1px] bg-black"></span>
+                  >Advantage<span className="ml-2 w-[53vw] h-[1px] bg-black xl:w-[32vw] xl:h-[2px]"></span>
                   </motion.p>
                   <motion.div
-                    className="bg-white rounded-t-lg w-[83vw] flex flex-row items-start justify-start"
+                    className="bg-white rounded-t-lg w-[83vw] flex flex-row items-start justify-start xl:w-[47vw]"
                     initial={{ opacity: 0, x: 50 }}
                     animate={animateProfile ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 1, ease: "easeOut" }}
                   >
-                    <div className="mb-2 flex flex-row md:flex-row lg:flex-row">
-                      <p className="text-lg">🧐</p>
-                      <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6  xl:mb-8">
+                    <div className="mb-2 flex flex-row md:flex-row lg:flex-row xl:mt-4">
+                      <p className="text-lg xl:text-[28px]">🧐</p>
+                      <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 xl:mb-8 xl:text-[28px]">
                         <span className="text-purple-600">세심</span>하고  <span className="text-purple-600">침착</span>한 성격을 바탕으로
-                        <span className="text-purple-600"> 작은<br />디테일</span>까지 놓치지 않습니다.</p>
+                        <span className="text-purple-600"> 작은<br className="xl:hidden" /><span className="hidden xl:inline">&nbsp;</span>디테일</span>까지 <br className="hidden xl:inline"></br>놓치지 않습니다.</p>
                     </div>
                   </motion.div>
                   <motion.div
-                    className="flex flex-row items-start justify-start bg-white w-[83vw]"
+                    className="flex flex-row items-start justify-start bg-white w-[83vw] xl:w-[47vw]"
                     initial={{ opacity: 0, x: -50 }}
                     animate={animateProfile ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 1, ease: "easeOut" }}
                   >
                     <div className="mb-2 flex flex-row md:flex-row lg:flex-row">
-                      <p className="text-lg">🏃</p>
-                      <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6  xl:mb-8">
-                        새로운 것을 <span className="text-purple-600">배우는 속도</span>가 빠르며<span className="text-purple-600"> 도전<br /></span>하는 데 두려움이 없습니다.</p>
+                      <p className="text-lg xl:text-[28px]">🏃</p>
+                      <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 xl:mb-8 xl:text-[28px]">
+                        새로운 것을 <span className="text-purple-600">배우는 속도</span>가 빠르며<span className="text-purple-600"> 도전<br className="xl:hidden" /></span>하는 데 <br className="hidden xl:inline" />두려움이 없습니다.</p>
                     </div>
                   </motion.div>
                   <motion.div
-                    className="flex flex-row items-start justify-start bg-white w-[83vw]"
+                    className="flex flex-row items-start justify-start bg-white w-[83vw] xl:w-[47vw]"
                     initial={{ opacity: 0, x: 50 }}
                     animate={animateProfile ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 1, ease: "easeOut" }}
                   >
                     <div className="mb-2 flex flex-row md:flex-row lg:flex-row">
-                      <p className="text-lg">👌</p>
-                      <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6  xl:mb-8">어려운 문제도 <span className="text-purple-600">끈기</span>를 가지고 끝까지 해결<br />하려고 노력합니다.</p>
+                      <p className="text-lg xl:text-[28px]">👌</p>
+                      <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 xl:mb-8 xl:text-[28px]">어려운 문제도 <span className="text-purple-600">끈기</span>를 가지고 끝까지 해결<br className="xl:hidden" />하려고 <br className="hidden xl:inline" />노력합니다.</p>
                     </div>
                   </motion.div>
                   <motion.div
-                    className="flex flex-row items-start justify-start bg-white rounded-b-lg w-[83vw]"
+                    className="flex flex-row items-start justify-start bg-white rounded-b-lg w-[83vw] xl:w-[47vw]"
                     initial={{ opacity: 0, x: -50 }}
                     animate={animateProfile ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 1, ease: "easeOut" }}
                   >
                     <div className="flex flex-row md:flex-row lg:flex-row">
-                      <p className="text-lg">👂</p>
-                      <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6  xl:mb-8">상대방의 말에 귀 기울이고 본인의 의견을<br />명확하게 전달할 수 있는 <span className="text-purple-600">커뮤니케이션 <br />능력</span>을 갖추고 있습니다.</p>
+                      <p className="text-lg xl:text-[28px]">👂</p>
+                      <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 xl:mb-8 xl:text-[28px]">상대방의 말에 귀 기울이고 본인의 의견을<br className="xl:hidden"/><span className="hidden xl:inline">&nbsp;</span>명확하게 <br className="hidden xl:inline"/>전달할 수 있는 <span className="text-purple-600">커뮤니케이션 <br className="xl:hidden"/>능력</span>을 갖추고 있습니다.</p>
                     </div>
                   </motion.div>
                 </div>
@@ -349,6 +348,10 @@ function App() {
                   </motion.div>
                 </div>
               }
+            </div>
+            {/*세번째 섹션*/}
+            <div className="section h-screen w-full flex flex-col justify-center items-center">
+
             </div>
           </ReactFullpage.Wrapper>
         )}
