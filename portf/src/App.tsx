@@ -42,7 +42,7 @@ function App() {
   const [showskill, setShowskill] = useState(false);
   const [showEdu, setShowEdu] = useState(false);
   const [showPro, setShowPro] = useState(false);
-
+  const [showProject, setShowProject] = useState(false);
 
   useEffect(() => {
     setVisibleMessages([myname[0]]);
@@ -103,6 +103,14 @@ function App() {
     }
   }, [showskill]);
 
+  useEffect(() => {
+    if (showPro) {
+      setTimeout(() => {
+        setShowProject(true); // ✅ 멘트 표시
+      }, 500);
+    }
+  }, [showPro]);
+
   return (
     <div className="bg-blue-100 w-full overflow-x-hidden scrollbar-hide overflow-auto min-h-screen flex flex-col">
       <ReactFullpage
@@ -120,12 +128,15 @@ function App() {
             setShowskill(false);
             setShowEdu(false);
             setShowPro(false);
+            setShowProject(false);
           }
           else if (destination.index === 2) {
             setAnimateProfile(false);
             setShowcertifi(true);
+            setShowskill(true);
+            setShowEdu(true);
             setShowPro(false);
-
+            setShowProject(false);
           }
           else if (destination.index === 3) {
             setAnimateProfile(false);
@@ -133,6 +144,7 @@ function App() {
             setShowskill(false);
             setShowEdu(false);
             setShowPro(true);
+            setShowProject(true);
           }
           else {
             setAnimateProfile(false);
@@ -140,6 +152,7 @@ function App() {
             setShowskill(false);
             setShowEdu(false);
             setShowPro(false);
+            setShowProject(false);
           }
         }}
         render={() => (
@@ -383,70 +396,65 @@ function App() {
                   transition={{ duration: 1, ease: "easeOut" }}
                 >
                   <div className="flex flex-row items-center pb-6 md:mb-16 lg:mb-24 xl:mb-16">
-                    <span className="mr-2 w-[56vw] h-[1px] bg-black xl:h-[2px] xl:w-[20vw]"></span>
+                    <span className="mr-2 w-[34vw] h-[1px] bg-black xl:h-[2px] xl:w-[20vw]"></span>
                     <p className="text-xl font-empha md:text-4xl md:ml-6 xl:ml-0">Projects</p>
-                    <span className="ml-2 w-[56vw] h-[1px] bg-black xl:h-[2px] xl:w-[20vw]"></span>
+                    <span className="ml-2 w-[34vw] h-[1px] bg-black xl:h-[2px] xl:w-[20vw]"></span>
                   </div>
                 </motion.div>
               </div>
-              <div className="absolute top-8 left-1/2 transform -translate-x-1/2 justify-start items-start xl:top-40 xl:left-[5vw] xl:translate-x-0 ">
-                <motion.div
-                  className="flex flex-col justify-start items-start w-full xl:h-96"
-                  initial={{ opacity: 0, y: 0 }}
-                  animate={showPro ? { opacity: 1, y: 50 } : {}}
-                  transition={{ duration: 1, ease: "easeOut" }}
-                >
-                  <div className="flex flex-row items-center pb-6 md:mb-16 lg:mb-24 xl:mb-16">
-                    <div className="flex flex-col items-center justify-center bg-white rounded-lg w-[22vw] h-[50vh]">
-                      <div className="flex items-center justify-center text-xl bg-orange-500 text-white font-empha w-52 h-9 rounded-lg mb-4">
+              {showProject && (
+                <div className="absolute top-32 xl:top-40 ">
+                  <motion.div
+                    className="grid grid-cols-2 xl:flex xl:flex-row justify-between items-start gap-x-[2vw] gap-y-[14vw] xl:gap-8 w-[100vw] pl-[2vw] pr-[2vw]"
+                    initial={{ opacity: 0, y: 100 }}
+                    animate={{ opacity: 1, y: 50 }}
+                    transition={{ duration: 1, ease: "easeOut" }}
+                  >
+                    <div className="flex flex-col items-center justify-start pt-3 w-[47vw] h-[30vh] bg-white rounded-lg xl:w-[22vw] xl:h-[50vh]">
+                      <div className="flex items-center justify-center text-base xl:text-xl bg-orange-500 text-white font-empha w-[42vw] h-6 mb-2 xl:w-52 xl:h-9 rounded-lg xl:mb-4">
                         EMO:D
                       </div>
-                      <div className="flex flex-col items-center justify-center font-sans font-semibold p-2 rounded-lg bg-[#FFE9D0] w-[20vw] text-slate-600 mb-4">
-                        <span>Dart Flutter Android Studio</span>
-                        <span>Swagger Figma</span>
+                      <div className="flex flex-col items-center justify-center font-sans text-sm xl:text-base font-semibold p-2 rounded-lg bg-[#FFE9D0] w-[42vw] xl:w-[20vw] mb-0 text-slate-600 xl:mb-4">
+                        <span>Dart Flutter Swagger</span>
+                        <span>Android Studio Figma</span>
                       </div>
-                      <div className="flex flex-col items-start justify-center font-sans font-semibold p-2 rounded-lg w-[20vw] ">
-                        <span>• 2023.08.01 ~ 2024.07.15</span>
+                      <div className="flex flex-col items-start justify-center font-sans font-semibold p-2 rounded-lg w-[45vw] text-sm xl:text-base xl:w-[20vw]">
+                        <span className="hidden xl:inline">• 2023.08.01 ~ 2024.07.15</span>
                         <span>• 5인 팀 프로젝트</span>
-                        <span>• 사회적 고립감 해소를 위한</span>
-                        <span className="ml-3">일기 작성 및 공유 어플</span>
-                        <span>• 어플 디자인, 카카오 로그인, </span><span className="ml-3">캘린더, Graph, API 연결 등 담당</span>
-                        <span>• <a
-                          href="https://github.com/EMO-D/EMO-D_client.git"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="underline"
-                        >
-                          EMO-D/EMO-D_client.git
-                        </a>
+                        <span>• 일기 작성 및 공유 어플</span>
+                        <span className="inline xl:hidden">• 어플 디자인, 캘린더, </span>
+                        <span className="ml-3 inline xl:hidden"> Graph, 카카오 로그인, API 연결 등 담당</span>
+                        <span className="hidden xl:inline">• 어플 디자인, 캘린더, Graph,</span>
+                        <span className="ml-3 hidden xl:inline">카카오 로그인, API 연결 등 담당</span>
+                        <span>
+                          •{" "}
+                          <a
+                            href="https://github.com/EMO-D/EMO-D_client.git"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="underline"
+                          >
+                            EMO-D_client.git
+                          </a>
                         </span>
                       </div>
                     </div>
-                  </div>
-                </motion.div>
-              </div>
-              <div className="absolute top-8 left-1/2 transform -translate-x-1/2 justify-start items-start xl:top-40 xl:left-[39vw] xl:translate-x-0 ">
-                <motion.div
-                  className="flex flex-col justify-start items-start w-full xl:h-96"
-                  initial={{ opacity: 0, y: 0 }}
-                  animate={showPro ? { opacity: 1, y: 50 } : {}}
-                  transition={{ duration: 1, ease: "easeOut" }}
-                >
-                  <div className="flex flex-col items-center justify-center bg-white rounded-lg w-[22vw] h-[50vh]">
-                    <div className="flex items-center justify-center text-xl bg-orange-500 text-white font-empha w-52 h-9 rounded-lg mb-4">
-                      {`<`}당신 {`>`}의 마이홈피
-                    </div>
-                    <div className="flex flex-col items-center justify-center font-sans font-semibold p-2 rounded-lg bg-[#FFE9D0] w-[20vw] text-slate-600 mb-4">
-                      <span>React JavaScript VScode</span>
-                      <span>Swagger Figma</span>
-                    </div>
-                    <div className="flex flex-col items-start justify-center font-sans font-semibold p-2 rounded-lg w-[20vw] ">
-                      <span>• 2024.07.02 ~ 2024.09.14</span>
-                      <span>• 4인 팀 프로젝트</span>
-                        <span>• 미니홈피 리메이킹 웹페이지</span>
+                    <div className="flex flex-col items-center justify-start pt-3 w-[47vw] h-[30vh] bg-white rounded-lg xl:w-[22vw] xl:h-[50vh]">
+                      <div className="flex items-center justify-center text-base xl:text-xl bg-orange-500 text-white font-empha  w-[42vw] h-6 mb-2 xl:w-52 xl:h-9 rounded-lg xl:mb-4">
+                        {`<`}당신 {`>`}의 마이홈피
+                      </div>
+                      <div className="flex flex-col items-center justify-center text-sm xl:text-base font-sans font-semibold p-2 rounded-lg bg-[#FFE9D0] w-[42vw] xl:w-[20vw]  mb-0 text-slate-600 xl:mb-4">
+                        <span>React JavaScript</span>
+                        <span>VScode Swagger Figma</span>
+                      </div>
+                      <div className="flex flex-col items-start justify-center font-sans font-semibold p-2 rounded-lg w-[45vw] text-sm xl:text-base xl:w-[20vw]">
+                        <span className="hidden xl:inline">• 2024.07.02 ~ 2024.09.14</span>
+                        <span>• 4인 팀 프로젝트</span>
+                        <span>• 미니홈피 리메이킹 웹</span>
                         <span>• 웹 개발 역량 성장 목적</span>
-                        <span>• 화면 디자인, 로그인 및 회원가입, </span><span className="ml-3">API 연결 등 담당</span>
-                      <span>• <a
+                        <span>• 화면 디자인, API 연결, </span>
+                        <span className="ml-3">로그인 및 회원가입 등 담당</span>
+                        <span>• <a
                           href="https://github.com/EWOOTZ/client.git"
                           target="_blank"
                           rel="noopener noreferrer"
@@ -455,31 +463,31 @@ function App() {
                           EWOOTZ/client.git
                         </a>
                         </span>
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
-              </div>
-              <div className="absolute top-8 left-1/2 transform -translate-x-1/2 justify-start items-start xl:top-40 xl:left-[73vw] xl:translate-x-0 ">
-                <motion.div
-                  className="flex flex-col justify-start items-start w-full xl:h-96"
-                  initial={{ opacity: 0, y: 0 }}
-                  animate={showPro ? { opacity: 1, y: 50 } : {}}
-                  transition={{ duration: 1, ease: "easeOut" }}
-                >
-                  <div className="flex flex-col items-center justify-center bg-white rounded-lg w-[22vw] h-[50vh]">
-                    <div className="flex items-center justify-center text-xl bg-orange-500 text-white font-empha w-52 h-9 rounded-lg mb-4">
-                      Study Buddy
-                    </div>
-                    <div className="flex flex-col items-center justify-center font-sans font-semibold p-2 rounded-lg bg-[#FFE9D0] w-[20vw] text-slate-600 mb-4">
-                      <span>React ReactNative JavaScript</span>
-                      <span>TypeScript Swagger Figma</span>
-                    </div>
-                    <div className="flex flex-col items-start justify-center font-sans font-semibold p-2 rounded-lg w-[20vw] ">
-                      <span>• 2024.09.13 ~ 2024.12.13</span>
-                      <span>• 2인 팀 프로젝트</span>
-                        <span>• 학습을 돕는 Web Application </span>
-                        <span>• 전체 화면 구현, WebView 사용,</span><span className="ml-3">API 연결 등 담당</span>
-                      <span>• <a
+                    <div className="flex flex-col items-center justify-start pt-3 bg-white rounded-lg w-[47vw] h-[30vh] xl:w-[22vw] xl:h-[50vh]">
+                      <div className="flex items-center justify-center text-base xl:text-xl bg-orange-500 text-white font-empha  w-[42vw] h-6  mb-2 xl:w-52 xl:h-9 rounded-lg xl:mb-4">
+                        Study Buddy
+                      </div>
+                      <div className="flex flex-col items-center justify-center text-sm xl:text-base font-sans font-semibold p-2 rounded-lg bg-[#FFE9D0] w-[42vw] xl:w-[20vw]  mb-0 text-slate-600 xl:mb-4">
+                        <div className="flex flex-col items-center justify-center xl:hidden">
+                          <span>React ReactNative</span>
+                          <span>JavaScript Swagger</span>
+                          <span>TypeScript Figma</span>
+                        </div>
+
+                        <div className="hidden xl:flex xl:flex-col items-center justify-center">
+                          <span>React ReactNative JavaScript</span>
+                          <span>Swagger TypeScript Figma</span>
+                        </div>
+                      </div>
+                      <div className="flex flex-col items-start justify-center font-sans font-semibold p-2 rounded-lg w-[45vw] text-sm xl:text-base xl:w-[20vw] ">
+                        <span className="hidden xl:inline">• 2024.09.13 ~ 2024.12.13</span>
+                        <span>• 2인 팀 프로젝트</span>
+                        <span>• 학습을 돕는 Web App</span>
+                        <span>• API 연결, WebView,</span>
+                        <span className="ml-3">전체 화면 구현 등 담당</span>
+                        <span>• <a
                           href="https://github.com/KwonHaeJin/StudyApp.git"
                           target="_blank"
                           rel="noopener noreferrer"
@@ -497,52 +505,36 @@ function App() {
                           StudyBuddyNative.git
                         </a>
                         </span>
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
-              </div>
-              <div className="absolute top-8 left-1/2 transform -translate-x-1/2 justify-start items-start xl:top-40 xl:left-[73vw] xl:translate-x-0 ">
-                <motion.div
-                  className="flex flex-col justify-start items-start w-full xl:h-96"
-                  initial={{ opacity: 0, y: 0 }}
-                  animate={showPro ? { opacity: 1, y: 50 } : {}}
-                  transition={{ duration: 1, ease: "easeOut" }}
-                >
-                  <div className="flex flex-col items-center justify-center bg-white rounded-lg w-[22vw] h-[50vh]">
-                    <div className="flex items-center justify-center text-xl bg-orange-500 text-white font-empha w-52 h-9 rounded-lg mb-4">
-                      Study Buddy
-                    </div>
-                    <div className="flex flex-col items-center justify-center font-sans font-semibold p-2 rounded-lg bg-[#FFE9D0] w-[20vw] text-slate-600 mb-4">
-                      <span>React ReactNative JavaScript</span>
-                      <span>TypeScript Swagger Figma</span>
-                    </div>
-                    <div className="flex flex-col items-start justify-center font-sans font-semibold p-2 rounded-lg w-[20vw] ">
-                      <span>• 2024.09.13 ~ 2024.12.13</span>
-                      <span>• 2인 팀 프로젝트</span>
-                        <span>• 학습을 돕는 Web Application </span>
-                        <span>• 전체 화면 구현, WebView 사용,</span><span className="ml-3">API 연결 등 담당</span>
-                      <span>• <a
-                          href="https://github.com/KwonHaeJin/StudyApp.git"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="underline"
-                        >
-                          StudyBuddyWeb.git
-                        </a>
+                    <div className="flex flex-col items-center justify-start pt-3 bg-white rounded-lg w-[47vw] h-[30vh] xl:w-[22vw] xl:h-[50vh]">
+                      <div className="flex items-center justify-center text-base xl:text-xl bg-orange-500 text-white font-empha  w-[42vw] h-6  mb-2 xl:w-52 xl:h-9 rounded-lg xl:mb-4">
+                        Portfolio
+                      </div>
+                      <div className="flex flex-col items-center justify-center text-sm xl:text-base font-sans font-semibold p-2 rounded-lg bg-[#FFE9D0] w-[42vw] xl:w-[20vw]  mb-0 text-slate-600 xl:mb-4">
+                        <span>React TypeScript</span>
+                        <span>TailwindCSS</span>
+                      </div>
+                      <div className="flex flex-col items-start justify-center font-sans font-semibold p-2 rounded-lg w-[45vw] text-sm xl:text-base xl:w-[20vw] ">
+                        <span className="hidden xl:inline">• 2025.02.09 ~ 2025.12.13</span>
+                        <span>• 1인 프로젝트</span>
+                        <span>
+                          • 개인 포트폴리오를 위한{" "}
+                          <span className="block ml-3 xl:inline xl:ml-0">웹사이트</span>
                         </span>
                         <span>• <a
-                          href="https://github.com/KwonHaeJin/StudyBuddyNative2.git"
+                          href="https://github.com/KwonHaeJin/portfolio.git"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="underline"
                         >
-                          StudyBuddyNative.git
+                          portfolio.git
                         </a>
                         </span>
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
+                      </div>
+                    </div>              </motion.div>
+                </div>
+              )}
             </div>
           </ReactFullpage.Wrapper>
         )}
