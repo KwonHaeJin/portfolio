@@ -5,6 +5,7 @@
   "dependencies": {
     "@craco/craco": "^7.1.0",
     "@fullpage/react-fullpage": "^0.1.48",
+    "@headlessui/react": "^2.2.0",
     "@lasbe/react-scroll-animation": "^2.0.6",
     "@tailwindcss/vite": "^4.0.6",
     "@testing-library/jest-dom": "^5.17.0",

@@ -1,40 +1,23 @@
 /* eslint-disable */
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import "./App.css";
+import { useMediaQuery } from "./useMediaQuery";
+import { myname, contactInfo, certificates, skills, education, projectData } from './information';
+import { ChainedAni, IntroAni, IntroMessage, ShowScrollHint } from './animationState'
+import Projectpopup from "./ProjectPopup";
 import Profile from "./images/profile.jpg";
-import Contact from "./images/phone-call.png";
+import Name from "./images/name.png";
+import Birth from "./images/cake.png";
 import Down from "./images/arrow-down.png";
 import ReactFullpage from '@fullpage/react-fullpage';
 
-const myname = ["Front-end Developer", "KwonHaeJin's", 'PORTFOLIO'];
-const contactInfo = [
-  { label: "Tel", value: "010-2109-0228" },
-  { label: "E-mail", value: "hjji0922@naver.com" },
-  { label: "Github", value: "https://github.com/KwonHaeJin", isLink: true },
-];
-const certificates = [
-  { name: "정보처리기사", date: "2024.09.10" },
-  { name: "SQLD", date: "2024.12.13" },
-  { name: "HSK 5급", date: "2024.04.21" },
-];
-const skills = [
-  { category: "#FFE9D0", skills: ["Javascript", "Typescript", "HTML", "Dart"] },
-  { category: "#EEF3ED", skills: ["React", "ReactNative", "Flutter", "VSCode", "AndroidStudio"] },
-  { category: "#F1D3CE", skills: ["TailwindCss", "CSS3"] },
-  { category: "#F8F3DE", skills: ["Github", "Swagger", "Figma"] },
-];
-const education = [
-  { period: "2019.03 ~ 2021.02", school: "경일여자고등학교" },
-  { period: "2021.03 ~ 2025.02", school: "계명대학교 컴퓨터공학과", grade: "4.07 / 4.5" },
-];
 
 function App() {
   const [visibleMessages, setVisibleMessages] = useState<string[]>([]);
   const [index, setIndex] = useState(0);
   const [showLine, setShowLine] = useState(false);
   const [startAdding, setStartAdding] = useState(false);
-  const [isAnimationComplete, setIsAnimationComplete] = useState(false);
   const [showScrollHint, setShowScrollHint] = useState(false);
   const [animateProfile, setAnimateProfile] = useState(false);
   const [showadvantage, setShowadvange] = useState(false);
@@ -43,73 +26,16 @@ function App() {
   const [showEdu, setShowEdu] = useState(false);
   const [showPro, setShowPro] = useState(false);
   const [showProject, setShowProject] = useState(false);
+  const [openPopup, setOpenPopup] = useState<number | null>(null);
+  const XL = useMediaQuery('(min-width: 1280px)');
 
-  useEffect(() => {
-    setVisibleMessages([myname[0]]);
-    setShowLine(true);
-    setTimeout(() => {
-      setStartAdding(true);
-    }, 500);
-  }, []);
-
-  useEffect(() => {
-    if (!startAdding || index >= myname.length - 1) return; // ✅ 3개가 다 표시되면 종료
-
-    const interval = setInterval(() => {
-      setVisibleMessages((prev) => [...prev, myname[index + 1]]); // 새로운 메시지 추가
-      setIndex((prevIndex) => prevIndex + 1); // 다음 메시지로 이동
-    }, 500);
-
-    return () => clearInterval(interval); // ✅ 3개가 다 나오면 setInterval 정지
-  }, [startAdding, index]);
-
-  useEffect(() => {
-    if (visibleMessages.length === myname.length && showLine) {
-      setTimeout(() => {
-        setIsAnimationComplete(true); // ✅ 모든 애니메이션이 끝났다고 표시
-      }, 500); // 마지막 애니메이션 후 약간의 딜레이 추가
-    }
-  }, [visibleMessages, showLine]);
-
-  useEffect(() => {
-    if (isAnimationComplete) {
-      setTimeout(() => {
-        setShowScrollHint(true); // ✅ 멘트 표시
-      }, 500);
-    }
-  }, [isAnimationComplete]);
-
-  useEffect(() => {
-    if (animateProfile) {
-      setTimeout(() => {
-        setShowadvange(true); // ✅ 멘트 표시
-      }, 500);
-    }
-  }, [animateProfile]);
-
-  useEffect(() => {
-    if (showcertifi) {
-      setTimeout(() => {
-        setShowskill(true); // ✅ 멘트 표시
-      }, 500);
-    }
-  }, [showcertifi]);
-
-  useEffect(() => {
-    if (showskill) {
-      setTimeout(() => {
-        setShowEdu(true); // ✅ 멘트 표시
-      }, 500);
-    }
-  }, [showskill]);
-
-  useEffect(() => {
-    if (showPro) {
-      setTimeout(() => {
-        setShowProject(true); // ✅ 멘트 표시
-      }, 500);
-    }
-  }, [showPro]);
+  IntroAni(myname, setVisibleMessages, setShowLine, setStartAdding);
+  IntroMessage(myname, startAdding, index, setVisibleMessages, setIndex);
+  ShowScrollHint(visibleMessages, myname, showLine, setShowScrollHint);
+  ChainedAni(animateProfile, setShowadvange);
+  ChainedAni(showcertifi, setShowskill);
+  ChainedAni(showskill, setShowEdu);
+  ChainedAni(showPro, setShowProject);
 
   return (
     <div className="bg-blue-100 w-full overflow-x-hidden scrollbar-hide overflow-auto min-h-screen flex flex-col">
@@ -212,14 +138,26 @@ function App() {
             </div>
             {/* 두번째 섹션 프로필 */}
             <div className="section h-screen w-full flex flex-col justify-center items-center xl:flex-row xl:justify-between">
-              <div className="absolute top-8 left-1/2 transform -translate-x-1/2 justify-start items-start xl:top-12 xl:left-4 xl:translate-x-0 ">
+              <div className="absolute top-20 left-1/2 transform -translate-x-1/2 justify-start items-start xl:top-28 xl:left-4 xl:translate-x-0 ">
                 <motion.div
                   className="flex flex-col justify-start items-start w-full xl:h-96"
-                  initial={{ opacity: 0, y: 0 }}
-                  animate={animateProfile ? { opacity: 1, y: 50 } : {}}
+                  initial={{ opacity: 0, x: -50 }}
+                  animate={animateProfile ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 1, ease: "easeOut" }}
                 >
-                  <img src={Profile} className="w-[30vw] h-[18vh] rounded-lg mr-4 mb-5 md:w-[29vw] md:h-[26vh] lg:w-[24vw] lg:h-[24vh] xl:h-[30vh] xl:w-[12vw] xl:mb-10"></img>
+                  <div className="flex flex-row items-end">
+                    <img src={Profile} className="w-[30vw] h-[18vh] rounded-lg mr-4 mb-5 md:w-[29vw] md:h-[26vh] lg:w-[24vw] lg:h-[24vh] xl:h-[30vh] xl:w-[12vw] xl:mb-10"></img>
+                    <div className="w-40 pl-2 h-15 xl:h-24 flex flex-col mb-4 xl:mb-10 justify-center">
+                      <div className="flex flex-row justify-items-end mb-3">
+                        <img src={Name} className="w-5 h-5 xl:w-8 xl:h-8"></img>
+                        <p className="font-empha text-base xl:text-lg pl-2 xl:pl-1">권해진</p>
+                      </div>
+                      <div className="flex flex-row justify-items-end">
+                        <img src={Birth} className="w-5 h-5 xl:w-8 xl:h-8"></img>
+                        <p className="font-empha text-base xl:text-lg pl-2 xl:pl-1">2002.02.21</p>
+                      </div>
+                    </div>
+                  </div>
                   <div className="flex-col flex justify-start items-start">
                     <div className="flex flex-row items-center pb-6 md:mb-16 lg:mb-4 xl:mb-10">
                       <p className="text-xl font-empha lg:text-4xl xl:text-[36px] ">Contact</p>
@@ -249,58 +187,35 @@ function App() {
               </div>
               {showadvantage &&
                 <div className="absolute bottom-20 flex-col justify-start items-start xl:left-[51.5vw] xl:top-[14vh]">
-                  <motion.p
-                    className="flex flex-row items-center justify-start w-full pb-6 font-empha text-xl md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[36px]"
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={animateProfile ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 1, ease: "easeOut" }}
-                  >Advantage<span className="ml-2 w-[53vw] h-[1px] bg-black lg:w-[62vw] xl:w-[32vw] xl:h-[2px]"></span>
-                  </motion.p>
                   <motion.div
-                    className="bg-white rounded-t-lg w-[83vw] flex flex-row items-start justify-start xl:w-[47vw]"
                     initial={{ opacity: 0, x: 50 }}
                     animate={animateProfile ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 1, ease: "easeOut" }}
                   >
-                    <div className="mb-2 flex flex-row md:flex-row lg:flex-row xl:mt-4">
-                      <p className="text-lg lg:text-4xl xl:text-[28px]">🧐</p>
-                      <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[28px]">
-                        <span className="text-purple-600">세심</span>하고  <span className="text-purple-600">침착</span>한 성격을 바탕으로
-                        <span className="text-purple-600"> 작은<br className="lg:hidden xl:hidden" /><span className="hidden lg:inline xl:inline">&nbsp;</span>디테일</span>까지 <br className="hidden xl:inline"></br>놓치지 않습니다.</p>
-                    </div>
-                  </motion.div>
-                  <motion.div
-                    className="flex flex-row items-start justify-start bg-white w-[83vw] xl:w-[47vw]"
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={animateProfile ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 1, ease: "easeOut" }}
-                  >
-                    <div className="mb-2 flex flex-row md:flex-row lg:flex-row">
-                      <p className="text-lg lg:text-4xl xl:text-[28px]">🏃</p>
-                      <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[28px]">
-                        새로운 것을 <span className="text-purple-600">배우는 속도</span>가 빠르며<span className="text-purple-600"> 도전<br className="lg:hidden xl:hidden" /></span>하는 데 <br className="hidden xl:inline" />두려움이 없습니다.</p>
-                    </div>
-                  </motion.div>
-                  <motion.div
-                    className="flex flex-row items-start justify-start bg-white w-[83vw] xl:w-[47vw]"
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={animateProfile ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 1, ease: "easeOut" }}
-                  >
-                    <div className="mb-2 flex flex-row md:flex-row lg:flex-row">
-                      <p className="text-lg lg:text-4xl xl:text-[28px]">👌</p>
-                      <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[28px]">어려운 문제도 <span className="text-purple-600">끈기</span>를 가지고 끝까지 해결<br className="lg:hidden xl:hidden" />하려고 <br className="hidden xl:inline" />노력합니다.</p>
-                    </div>
-                  </motion.div>
-                  <motion.div
-                    className="flex flex-row items-start justify-start bg-white rounded-b-lg w-[83vw] xl:w-[47vw]"
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={animateProfile ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 1, ease: "easeOut" }}
-                  >
-                    <div className="flex flex-row md:flex-row lg:flex-row">
-                      <p className="text-lg lg:text-4xl xl:text-[28px]">👂</p>
-                      <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[28px]">상대방의 말에 귀 기울이고 본인의 의견을<br className="lg:hidden xl:hidden" /><span className="hidden lg:inline xl:inline">&nbsp;</span>명확하게 <br className="hidden xl:inline" />전달할 수 있는 <span className="text-purple-600">커뮤니케이션 <br className="lg:hidden xl:hidden" />능력</span>을 갖추고 있습니다.</p>
+                    <p className="flex flex-row items-center justify-start w-full pb-6 font-empha text-xl md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[36px]">
+                      Advantage
+                      <span className="ml-2 w-[53vw] h-[1px] bg-black lg:w-[62vw] xl:w-[32vw] xl:h-[2px]"></span>
+                    </p>
+                    <div className="bg-white rounded-lg w-[83vw] flex flex-col items-start justify-start xl:w-[47vw]">
+                      <div className="mb-2 flex flex-row md:flex-row lg:flex-row xl:mt-4">
+                        <p className="text-lg lg:text-4xl xl:text-[28px]">🧐</p>
+                        <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[28px]">
+                          <span className="text-purple-600">세심</span>하고  <span className="text-purple-600">침착</span>한 성격을 바탕으로
+                          <span className="text-purple-600"> 작은<br className="lg:hidden xl:hidden" /><span className="hidden lg:inline xl:inline">&nbsp;</span>디테일</span>까지 <br className="hidden xl:inline"></br>놓치지 않습니다.</p>
+                      </div>
+                      <div className="mb-2 flex flex-row md:flex-row lg:flex-row">
+                        <p className="text-lg lg:text-4xl xl:text-[28px]">🏃</p>
+                        <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[28px]">
+                          새로운 것을 <span className="text-purple-600">배우는 속도</span>가 빠르며<span className="text-purple-600"> 도전<br className="lg:hidden xl:hidden" /></span>하는 데 <br className="hidden xl:inline" />두려움이 없습니다.</p>
+                      </div>
+                      <div className="mb-2 flex flex-row md:flex-row lg:flex-row">
+                        <p className="text-lg lg:text-4xl xl:text-[28px]">👌</p>
+                        <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[28px]">어려운 문제도 <span className="text-purple-600">끈기</span>를 가지고 끝까지 <br className="lg:hidden xl:hidden" />해결하려고 <br className="hidden xl:inline" />노력합니다.</p>
+                      </div>
+                      <div className="flex flex-row md:flex-row lg:flex-row">
+                        <p className="text-lg lg:text-4xl xl:text-[28px]">👂</p>
+                        <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[28px]">상대방의 말에 귀 기울이고 본인의 의견을<br className="lg:hidden xl:hidden" /><span className="hidden lg:inline xl:inline">&nbsp;</span>명확하게 <br className="hidden xl:inline" />전달할 수 있는 <span className="text-purple-600">커뮤니케이션 <br className="lg:hidden xl:hidden" />능력</span>을 갖추고 있습니다.</p>
+                      </div>
                     </div>
                   </motion.div>
                 </div>
@@ -311,8 +226,8 @@ function App() {
               <div className="absolute top-20 left-1/2 transform -translate-x-1/2 justify-start items-start xl:left-4 xl:translate-x-0 xl:top-48">
                 <motion.div
                   className="flex flex-col justify-start items-start w-full xl:h-96"
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={showcertifi ? { opacity: 1, x: 0 } : {}}
+                  initial={XL ? { opacity: 0, y: -50 } : { opacity: 0, x: -50 }}
+                  animate={showcertifi ? { opacity: 1, x: 0, y: 0 } : {}}
                   transition={{ duration: 1, ease: "easeOut" }}
                 >
                   <div className="flex-col flex justify-start items-start">
@@ -335,11 +250,11 @@ function App() {
                 <div className="absolute top-72 left-1/2 transform -translate-x-1/2 justify-start items-start xl:left-1/3 xl:translate-x-0 xl:top-48">
                   <motion.div
                     className="flex flex-col items-center w-full pb-6 font-empha text-xl md:text-3xl md:mb-6  xl:mb-8"
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={showcertifi ? { opacity: 1, x: 0 } : {}}
+                    initial={XL ? { opacity: 0, y: 50 } : { opacity: 0, x: 50 }}
+                    animate={showcertifi ? { opacity: 1, x: 0, y: 0 } : {}}
                     transition={{ duration: 1, ease: "easeOut" }}
                   >
-                    <div className="flex flex-row items-center pb-6 md:mb-16 lg:mb-24 xl:mb-16">
+                    <div className="flex flex-row items-center pb-5 md:mb-16 lg:mb-24 xl:mb-16">
                       <p className="text-xl font-empha md:text-4xl md:ml-6 xl:ml-0">Skills</p>
                       <span className="ml-2 w-[68vw] h-[1px] bg-black xl:h-[2px] xl:w-[24vw]"></span>
                     </div>
@@ -363,8 +278,8 @@ function App() {
                 <div className="absolute bottom-14 left-1/2 transform -translate-x-1/2 justify-start items-start xl:left-2/3 xl:translate-x-0 xl:top-48">
                   <motion.div
                     className="flex flex-col items-center w-full pb-6 font-empha text-xl md:text-3xl md:mb-6  xl:mb-8"
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={showskill ? { opacity: 1, x: 0 } : {}}
+                    initial={XL ? { opacity: 0, y: -50 } : { opacity: 0, x: -50 }}
+                    animate={showcertifi ? { opacity: 1, x: 0, y: 0 } : {}}
                     transition={{ duration: 1, ease: "easeOut" }}
                   >
                     <div className="flex-col flex justify-start items-start">
@@ -388,7 +303,7 @@ function App() {
             </div>
             {/*네번째 섹션*/}
             <div className="section h-screen w-full flex flex-col justify-center items-center">
-              <div className="absolute top-8 left-1/2 transform -translate-x-1/2 justify-start items-start xl:top-10 xl:left-[24.2vw] xl:translate-x-0 ">
+              <div className="absolute top-8 left-1/2 transform -translate-x-1/2 justify-start items-start xl:top-12 xl:left-[24.2vw] xl:translate-x-0 ">
                 <motion.div
                   className="flex flex-col justify-start items-start w-full xl:h-96"
                   initial={{ opacity: 0, y: 0 }}
@@ -403,136 +318,57 @@ function App() {
                 </motion.div>
               </div>
               {showProject && (
-                <div className="absolute top-32 xl:top-40 ">
+                <div className="absolute top-32 xl:top-48 ">
                   <motion.div
-                    className="grid grid-cols-2 xl:flex xl:flex-row justify-between items-start gap-x-[2vw] gap-y-[14vw] xl:gap-8 w-[100vw] pl-[2vw] pr-[2vw]"
                     initial={{ opacity: 0, y: 100 }}
                     animate={{ opacity: 1, y: 50 }}
                     transition={{ duration: 1, ease: "easeOut" }}
-                  >
-                    <div className="flex flex-col items-center justify-start pt-3 w-[47vw] h-[30vh] bg-white rounded-lg xl:w-[22vw] xl:h-[50vh]">
-                      <div className="flex items-center justify-center text-base xl:text-xl bg-orange-500 text-white font-empha w-[42vw] h-6 mb-2 xl:w-52 xl:h-9 rounded-lg xl:mb-4">
-                        EMO:D
-                      </div>
-                      <div className="flex flex-col items-center justify-center font-sans text-sm xl:text-base font-semibold p-2 rounded-lg bg-[#FFE9D0] w-[42vw] xl:w-[20vw] mb-0 text-slate-600 xl:mb-4">
-                        <span>Dart Flutter Swagger</span>
-                        <span>Android Studio Figma</span>
-                      </div>
-                      <div className="flex flex-col items-start justify-center font-sans font-semibold p-2 rounded-lg w-[45vw] text-sm xl:text-base xl:w-[20vw]">
-                        <span className="hidden xl:inline">• 2023.08.01 ~ 2024.07.15</span>
-                        <span>• 5인 팀 프로젝트</span>
-                        <span>• 일기 작성 및 공유 어플</span>
-                        <span className="inline xl:hidden">• 어플 디자인, 캘린더, </span>
-                        <span className="ml-3 inline xl:hidden"> Graph, 카카오 로그인, API 연결 등 담당</span>
-                        <span className="hidden xl:inline">• 어플 디자인, 캘린더, Graph,</span>
-                        <span className="ml-3 hidden xl:inline">카카오 로그인, API 연결 등 담당</span>
-                        <span>
-                          •{" "}
-                          <a
-                            href="https://github.com/EMO-D/EMO-D_client.git"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="underline"
+                  > <div className="grid grid-cols-2 xl:flex-row justify-between items-start gap-x-[2vw] gap-y-[14vw] w-[100vw] pl-[2vw] pr-[2vw] xl:flex xl:flex-wrap xl:gap-9">
+                      {projectData.map((project, index) => (
+                        <div
+                          key={index}
+                          onClick={() => setOpenPopup(index)}
+                          className="cursor-pointer relative flex flex-col items-center justify-start pt-3 bg-white rounded-lg w-[47vw] h-[30vh] xl:w-[22vw] xl:h-[42vh] hover:shadow-lg transition"
+                        >
+                          <div className="flex items-center justify-center text-base xl:text-xl bg-orange-500 text-white font-empha w-[42vw] h-6 mb-2 xl:w-52 xl:h-9 rounded-lg xl:mb-4">
+                            {project.title}
+                          </div>
+                          <div className="flex flex-col items-center justify-center text-sm xl:text-base font-sans font-semibold p-2 rounded-lg bg-[#FFE9D0] w-[42vw] xl:w-[20vw] mb-0 text-slate-600 xl:mb-4">
+                            {project.stack.map((line, i) => (
+                              <span key={i}>{line}</span>
+                            ))}
+                          </div>
+                          <div className="flex flex-col items-start justify-center font-sans font-semibold p-2 rounded-lg w-[45vw] text-sm xl:text-base xl:w-[20vw]">
+                            {project.description.map((line, i) => (
+                              <span key={i}>{line}</span>
+                            ))}
+                          </div>
+                          <motion.div
+                            className="absolute bottom-2 right-4 text-gray-500 text-xs font-empha"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{
+                              duration: 1,
+                              ease: "easeInOut",
+                              repeat: Infinity,
+                              repeatType: "mirror"
+                            }}
                           >
-                            EMO-D_client.git
-                          </a>
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-center justify-start pt-3 w-[47vw] h-[30vh] bg-white rounded-lg xl:w-[22vw] xl:h-[50vh]">
-                      <div className="flex items-center justify-center text-base xl:text-xl bg-orange-500 text-white font-empha  w-[42vw] h-6 mb-2 xl:w-52 xl:h-9 rounded-lg xl:mb-4">
-                        {`<`}당신 {`>`}의 마이홈피
-                      </div>
-                      <div className="flex flex-col items-center justify-center text-sm xl:text-base font-sans font-semibold p-2 rounded-lg bg-[#FFE9D0] w-[42vw] xl:w-[20vw]  mb-0 text-slate-600 xl:mb-4">
-                        <span>React JavaScript</span>
-                        <span>VScode Swagger Figma</span>
-                      </div>
-                      <div className="flex flex-col items-start justify-center font-sans font-semibold p-2 rounded-lg w-[45vw] text-sm xl:text-base xl:w-[20vw]">
-                        <span className="hidden xl:inline">• 2024.07.02 ~ 2024.09.14</span>
-                        <span>• 4인 팀 프로젝트</span>
-                        <span>• 미니홈피 리메이킹 웹</span>
-                        <span>• 웹 개발 역량 성장 목적</span>
-                        <span>• 화면 디자인, API 연결, </span>
-                        <span className="ml-3">로그인 및 회원가입 등 담당</span>
-                        <span>• <a
-                          href="https://github.com/EWOOTZ/client.git"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="underline"
-                        >
-                          EWOOTZ/client.git
-                        </a>
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-center justify-start pt-3 bg-white rounded-lg w-[47vw] h-[30vh] xl:w-[22vw] xl:h-[50vh]">
-                      <div className="flex items-center justify-center text-base xl:text-xl bg-orange-500 text-white font-empha  w-[42vw] h-6  mb-2 xl:w-52 xl:h-9 rounded-lg xl:mb-4">
-                        Study Buddy
-                      </div>
-                      <div className="flex flex-col items-center justify-center text-sm xl:text-base font-sans font-semibold p-2 rounded-lg bg-[#FFE9D0] w-[42vw] xl:w-[20vw]  mb-0 text-slate-600 xl:mb-4">
-                        <div className="flex flex-col items-center justify-center xl:hidden">
-                          <span>React ReactNative</span>
-                          <span>JavaScript Swagger</span>
-                          <span>TypeScript Figma</span>
+                            Click me!</motion.div>
                         </div>
-
-                        <div className="hidden xl:flex xl:flex-col items-center justify-center">
-                          <span>React ReactNative JavaScript</span>
-                          <span>Swagger TypeScript Figma</span>
-                        </div>
-                      </div>
-                      <div className="flex flex-col items-start justify-center font-sans font-semibold p-2 rounded-lg w-[45vw] text-sm xl:text-base xl:w-[20vw] ">
-                        <span className="hidden xl:inline">• 2024.09.13 ~ 2024.12.13</span>
-                        <span>• 2인 팀 프로젝트</span>
-                        <span>• 학습을 돕는 Web App</span>
-                        <span>• API 연결, WebView,</span>
-                        <span className="ml-3">전체 화면 구현 등 담당</span>
-                        <span>• <a
-                          href="https://github.com/KwonHaeJin/StudyApp.git"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="underline"
+                      ))}
+                      {projectData.map((project, index: number) => (
+                        <Projectpopup 
+                        key={index} 
+                        isOpen={openPopup === index} 
+                        onClose={() => setOpenPopup(null)}
+                        title={project.title}
                         >
-                          StudyBuddyWeb.git
-                        </a>
-                        </span>
-                        <span>• <a
-                          href="https://github.com/KwonHaeJin/StudyBuddyNative2.git"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="underline"
-                        >
-                          StudyBuddyNative.git
-                        </a>
-                        </span>
-                      </div>
+                          {project.description}
+                        </Projectpopup>
+                      ))}
                     </div>
-                    <div className="flex flex-col items-center justify-start pt-3 bg-white rounded-lg w-[47vw] h-[30vh] xl:w-[22vw] xl:h-[50vh]">
-                      <div className="flex items-center justify-center text-base xl:text-xl bg-orange-500 text-white font-empha  w-[42vw] h-6  mb-2 xl:w-52 xl:h-9 rounded-lg xl:mb-4">
-                        Portfolio
-                      </div>
-                      <div className="flex flex-col items-center justify-center text-sm xl:text-base font-sans font-semibold p-2 rounded-lg bg-[#FFE9D0] w-[42vw] xl:w-[20vw]  mb-0 text-slate-600 xl:mb-4">
-                        <span>React TypeScript</span>
-                        <span>TailwindCSS</span>
-                      </div>
-                      <div className="flex flex-col items-start justify-center font-sans font-semibold p-2 rounded-lg w-[45vw] text-sm xl:text-base xl:w-[20vw] ">
-                        <span className="hidden xl:inline">• 2025.02.09 ~ 2025.12.13</span>
-                        <span>• 1인 프로젝트</span>
-                        <span>
-                          • 개인 포트폴리오를 위한{" "}
-                          <span className="block ml-3 xl:inline xl:ml-0">웹사이트</span>
-                        </span>
-                        <span>• <a
-                          href="https://github.com/KwonHaeJin/portfolio.git"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="underline"
-                        >
-                          portfolio.git
-                        </a>
-                        </span>
-                      </div>
-                    </div>              </motion.div>
+                  </motion.div>
                 </div>
               )}
             </div>
