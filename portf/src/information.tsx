@@ -36,11 +36,12 @@ export const projectData = [
       <span className="hidden xl:inline">• 2023.08.01 ~ 2024.07.15'</span>,
       '• 5인 팀 프로젝트',
       '• 일기 작성 및 공유 어플',
-      <span className="inline xl:hidden">• 어플 디자인, 캘린더, </span>,
-      <span className="ml-3 inline xl:hidden"> Graph, 카카오 로그인, </span>,
-      <span className="ml-3 inline xl:hidden">API 연결 등 담당</span>,
-      <span className="hidden xl:inline">• 어플 디자인, 캘린더, Graph,</span>,
-      <span className="ml-3 hidden xl:inline">카카오 로그인, API 연결 등 담당</span>]
+      <span>
+      • 어플 디자인, 캘린더, <br className="inline md:hidden"/><span className="inline md:hidden">&nbsp;&nbsp;</span>Graph, 카카오 <br className="hidden md:inline"/>
+      <span className="hidden md:inline">&nbsp;&nbsp;</span>로그인, <br className="inline md:hidden"/><span className="inline md:hidden">&nbsp;&nbsp;</span>API 연결 등 담당
+    </span>,
+   
+    ]
   },
   {
     title: '<당신>의 마이홈피',
@@ -49,11 +50,8 @@ export const projectData = [
       <span className="hidden xl:inline">• 2024.07.02 ~ 2024.09.14</span>,
       '• 4인 팀 프로젝트',
       '• 미니홈피 리메이킹 웹',
-      <span className="inline xl:hidden">• 화면 디자인, API 연결, </span>,
-      <span className="ml-3 inline xl:hidden">로그인 및 회원가입 등</span>,
-      <span className="ml-3 inline xl:hidden">담당</span>,
-      <span className="hidden xl:inline">• 화면 디자인, API 연결, 로그인 및</span>,
-      <span className="ml-3 hidden xl:inline">회원가입 등 담당</span>,
+      <span>• 화면 디자인, API 연결, <br className="inline md:hidden"/><span className="inline md:hidden">&nbsp;&nbsp;</span>로그인 및 <br className="hidden md:inline"/>
+      <span className="hidden md:inline">&nbsp;&nbsp;</span>회원가입 등 <br className="inline md:hidden"/><span className="inline md:hidden">&nbsp;&nbsp;</span>담당</span>,
     ]
   },
   {
@@ -63,10 +61,10 @@ export const projectData = [
       <span className="hidden xl:inline">• 2024.09.13 ~ 2024.12.13</span>,
       '• 2인 팀 프로젝트',
       '• 학습을 돕는 Web App',
-      <span className="inline xl:hidden">• API 연결, WebView,</span>,
-      <span className="ml-3 inline xl:hidden">전체 화면 구현 등 담당</span>,
-      <span className="hidden xl:inline">• API 연결, WebView, 전체 화면</span>,
-      <span className="ml-3 hidden xl:inline">구현 등 담당</span>
+      <span className="inline">• API 연결, WebView, <br className="inline md:hidden"/><span className="inline md:hidden">&nbsp;&nbsp;</span>전체 화면 <br className="hidden xl:inline"/>
+      <span className="hidden xl:inline">&nbsp;&nbsp;</span>구현 <br className="hidden md:inline xl:hidden"/>
+      <span className="hidden md:inline xl:hidden">&nbsp;&nbsp;</span>등 담당</span>,
+      
     ]
   },
   {
@@ -75,9 +73,7 @@ export const projectData = [
     description: [
       <span className="hidden xl:inline">• 2025.02.09 ~ 2025.12.13</span>,
       '• 1인 프로젝트',
-      <span className="inline xl:hidden">• 개인 포트폴리오를 위한</span>,
-      <span className="ml-3 inline xl:hidden">웹사이트</span>,
-      <span className="hidden xl:inline">• 개인 포트폴리오를 위한 웹사이트</span>,
+      <span className="inline">• 개인 포트폴리오를 위한 <br className="inline md:hidden"/><span className="inline md:hidden">&nbsp;&nbsp;</span>웹사이트</span>,
     ]
   }
 ];
