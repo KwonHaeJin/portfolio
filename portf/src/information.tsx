@@ -1,3 +1,9 @@
+import EMOD from "./images/EMOD.png";
+import HOMEP from "./images/myhomepp.png";
+import port from "./images/portfolio.png";
+import SB from "./images/studybuddy.png";
+
+
 export const myname = [
   "Front-end Developer",
   "KwonHaeJin's",
@@ -32,6 +38,7 @@ export const projectData = [
   {
     title: 'EMO:D',
     stack: ['Dart Flutter Swagger', 'Android Studio Figma'],
+    imgsrc: EMOD,
     description: [
       <span className="hidden xl:inline">• 2023.08.01 ~ 2024.07.15'</span>,
       '• 5인 팀 프로젝트',
@@ -46,6 +53,7 @@ export const projectData = [
   {
     title: '<당신>의 마이홈피',
     stack: ['React JavaScript', 'VScode Swagger Figma'],
+    imgsrc: HOMEP,
     description: [
       <span className="hidden xl:inline">• 2024.07.02 ~ 2024.09.14</span>,
       '• 4인 팀 프로젝트',
@@ -56,6 +64,7 @@ export const projectData = [
   },
   {
     title: 'Study Buddy',
+    imgsrc: SB,
     stack: ['React ReactNative', 'Swagger JavaScript', 'TypeScript Figma'],
     description: [
       <span className="hidden xl:inline">• 2024.09.13 ~ 2024.12.13</span>,
@@ -69,6 +78,7 @@ export const projectData = [
   },
   {
     title: 'Portfolio',
+    imgsrc: port,
     stack: ['React TypeScript', 'TailwindCSS'],
     description: [
       <span className="hidden xl:inline">• 2025.02.09 ~ 2025.12.13</span>,

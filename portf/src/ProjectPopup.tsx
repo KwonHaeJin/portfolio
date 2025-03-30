@@ -7,9 +7,10 @@ interface ProjectModalProps {
   onClose: () => void;
   title: string;
   children: ReactNode;
+  imgsrc?: string;
 }
 
-const Projectpopup = ({ isOpen, onClose, children, title }: ProjectModalProps) => {
+const Projectpopup = ({ isOpen, onClose, children, title, imgsrc }: ProjectModalProps) => {
   return (
     <Transition show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-50" onClose={onClose}>
@@ -47,6 +48,9 @@ const Projectpopup = ({ isOpen, onClose, children, title }: ProjectModalProps) =
               <Dialog.Title className="flex items-center justify-center rounded-xl text-2xl bg-orange-500 text-white font-empha w-[60vw] h-9 mb-2 xl:text-xl xl:w-52 xl:h-9 xl:mb-4">
                 {title}
               </Dialog.Title>
+              {imgsrc && (
+                <img src={imgsrc} className='w-[75vw] h-[18vh]'/>
+              )}
               <div className="text-sm text-gray-600">{children}</div>
               
             </Dialog.Panel>

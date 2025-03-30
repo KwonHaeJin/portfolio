@@ -363,6 +363,7 @@ function App() {
                         isOpen={openPopup === index} 
                         onClose={() => setOpenPopup(null)}
                         title={project.title}
+                        imgsrc={project?.imgsrc}
                         >
                           {project.description}
                         </Projectpopup>
