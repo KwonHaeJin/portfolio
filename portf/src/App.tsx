@@ -235,11 +235,11 @@ function App() {
                       <p className="text-xl font-empha md:text-4xl">Certificate</p>
                       <span className="ml-2 w-56 h-[1px] bg-black md:w-[56vw] xl:w-[16vw] xl:h-[2px]"></span>
                     </div>
-                    <div className="bg-white rounded-lg w-[82vw] pl-4 pt-4 xl:pt-6 xl:w-[30vw]">
+                    <div className="bg-white rounded-lg w-[82vw] pl-4 pt-2 xl:pt-6 xl:w-[30vw]">
                       {certificates.map((cert, index) => (
                         <div key={index} className="flex flex-row md:flex-row lg:flex-row">
                           <p className="text-lg font-semibold -mb-1 md:text-3xl">{cert.name}</p>
-                          <p className="text-lg ml-2 mb-1 md:text-3xl md:mb-4 xl:mb-6">{cert.date}</p>
+                          <p className="text-lg ml-2 mb-2 md:text-3xl md:mb-4 xl:mb-6">{cert.date}</p>
                         </div>
                       ))}
                     </div>
@@ -323,7 +323,7 @@ function App() {
                     initial={{ opacity: 0, y: 100 }}
                     animate={{ opacity: 1, y: 50 }}
                     transition={{ duration: 1, ease: "easeOut" }}
-                  > <div className="grid grid-cols-2 md:ml-10 xl:flex-row justify-between items-start gap-x-[2vw] gap-y-[14vw] md:gap-y-[8vw] w-[100vw] px-[2vw] xl:flex xl:flex-wrap xl:gap-9">
+                  > <div className="grid grid-cols-2 md:ml-10 xl:flex-row justify-between items-start gap-x-[2vw] gap-y-[14vw] md:gap-y-[8vw] w-[100vw] px-[2vw] xl:flex xl:flex-wrap xl:ml-0">
                       {projectData.map((project, index) => (
                         <div
                           key={index}
