@@ -27,6 +27,9 @@ function App() {
   const [showPro, setShowPro] = useState(false);
   const [showProject, setShowProject] = useState(false);
   const [openPopup, setOpenPopup] = useState<number | null>(null);
+  const [showYoutube, setShowYoutube] = useState(false);
+  const [showYoutube2, setShowYoutube2] = useState(false);
+  const [fullpageApi, setFullpageApi] = useState<any>(null);
   const XL = useMediaQuery('(min-width: 1280px)');
 
   IntroAni(myname, setVisibleMessages, setShowLine, setStartAdding);
@@ -36,6 +39,42 @@ function App() {
   ChainedAni(showcertifi, setShowskill);
   ChainedAni(showskill, setShowEdu);
   ChainedAni(showPro, setShowProject);
+
+  const extractYouTubeId = (url: string) => {
+    const match = url.match(/(?:v=|\/)([0-9A-Za-z_-]{11})/);
+    return match ? match[1] : '';
+  };
+
+  const handleClose = () => {
+    setShowYoutube(false);
+    setShowYoutube2(false);
+    setOpenPopup(null); // 기존 팝업 닫기
+  };
+
+  useEffect(() => {
+    if (openPopup !== null) {
+      document.body.style.overflow = 'hidden';
+  
+      if (fullpageApi) {
+        fullpageApi.setAllowScrolling(false);
+      }
+    } else {
+      document.body.style.overflow = '';
+  
+      if (fullpageApi) {
+        fullpageApi.setAllowScrolling(true);
+      }
+    }
+  
+    return () => {
+      document.body.style.overflow = '';
+      if (fullpageApi) {
+        fullpageApi.setAllowScrolling(true);
+      }
+    };
+  }, [openPopup, fullpageApi]);
+  
+  
 
   return (
     <div className="bg-blue-100 w-full overflow-x-hidden scrollbar-hide overflow-auto min-h-screen flex flex-col">
@@ -81,7 +120,9 @@ function App() {
             setShowProject(false);
           }
         }}
-        render={() => (
+        render={({fullpageApi}) => {
+          setFullpageApi(fullpageApi);
+          return(
           <ReactFullpage.Wrapper>
             {/* 첫번째 섹션 표지 */}
             <div className="section first-section">
@@ -201,7 +242,7 @@ function App() {
                         <p className="text-lg md:text-3xl lg:text-4xl xl:text-[28px]">🧐</p>
                         <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[28px]">
                           <span className="text-purple-600">세심</span>하고  <span className="text-purple-600">침착</span>한 성격을 바탕으로
-                          <span className="text-purple-600"> 작은<br className="md:hidden" /><span className="hidden md:inline">&nbsp;</span>디테일</span><br className="hidden md:inline xl:hidden"/>까지 <br className="hidden xl:inline"></br>놓치지 않습니다.</p>
+                          <span className="text-purple-600"> 작은<br className="md:hidden" /><span className="hidden md:inline">&nbsp;</span>디테일</span><br className="hidden md:inline xl:hidden" />까지 <br className="hidden xl:inline"></br>놓치지 않습니다.</p>
                       </div>
                       <div className="mb-2 flex flex-row md:flex-row lg:flex-row">
                         <p className="text-lg md:text-3xl lg:text-4xl xl:text-[28px]">🏃</p>
@@ -214,7 +255,7 @@ function App() {
                       </div>
                       <div className="flex flex-row md:flex-row lg:flex-row">
                         <p className="text-lg md:text-3xl lg:text-4xl xl:text-[28px]">👂</p>
-                        <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-4 xl:text-[28px]">상대방의 말에 귀 기울이고 본인의 의견을<br className="md:hidden" /><span className="hidden md:inline">&nbsp;</span>명확<br className="hidden md:inline xl:hidden"/>하게 <br className="hidden xl:inline"/>전달할 수 있는 <span className="text-purple-600">커뮤니케이션 <br className="md:hidden" />능력</span>을 갖추고 <br className="hidden md:inline xl:hidden"/>있습니다.</p>
+                        <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-4 xl:text-[28px]">상대방의 말에 귀 기울이고 본인의 의견을<br className="md:hidden" /><span className="hidden md:inline">&nbsp;</span>명확<br className="hidden md:inline xl:hidden" />하게 <br className="hidden xl:inline" />전달할 수 있는 <span className="text-purple-600">커뮤니케이션 <br className="md:hidden" />능력</span>을 갖추고 <br className="hidden md:inline xl:hidden" />있습니다.</p>
                       </div>
                     </div>
                   </motion.div>
@@ -358,14 +399,102 @@ function App() {
                         </div>
                       ))}
                       {projectData.map((project, index: number) => (
-                        <Projectpopup 
-                        key={index} 
-                        isOpen={openPopup === index} 
-                        onClose={() => setOpenPopup(null)}
-                        title={project.title}
-                        imgsrc={project?.imgsrc}
+                        <Projectpopup
+                          key={index}
+                          isOpen={openPopup === index}
+                          onClose={handleClose}
+                          title={project.title}
+                          imgsrc={project?.imgsrc}
                         >
-                          {project.description}
+                          <div className="flex flex-row my-2">
+                            <p className="font-empha text-[18px] whitespace-nowrap mr-1">소개: </p>
+                            <p className="text-[18px] break-words">{project.onePoint}</p>
+                          </div>
+                          <div className="flex flex-row mb-2">
+                            <p className="font-empha text-[18px] whitespace-nowrap mr-1">Github: </p>
+                            <a
+                              href={project.githubLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-blue-500 underline text-[18px] break-all mr-4"
+                            >
+                              🔗링크 보기
+                            </a>
+                            {project.githubLink2 && (
+                              <a
+                                href={project.githubLink2}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-blue-500 underline text-[18px] break-all"
+                              >
+                                🔗링크 보기
+                              </a>
+                            )}
+                          </div>
+                          <div className="font-empha text-[18px] mb-1">프로젝트 설명</div>
+                          {project.youtubeLink && (
+                            <>
+                              <div className="text-base -mb-3">캡스톤 프로젝트(1) 데모영상</div>
+                              <div className="w-full my-4 aspect-video">
+                                {showYoutube ? (
+                                  <iframe
+                                    className="w-full h-full rounded-lg"
+                                    src={`https://www.youtube.com/embed/${extractYouTubeId(project.youtubeLink)}?autoplay=1`}
+                                    title="YouTube video player"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                  ></iframe>
+                                ) : (
+                                  <div
+                                    className="w-full h-full relative cursor-pointer"
+                                    onClick={() => setShowYoutube(true)}
+                                  >
+                                    <img
+                                      src={`https://img.youtube.com/vi/${extractYouTubeId(project.youtubeLink)}/hqdefault.jpg`}
+                                      alt="YouTube Thumbnail"
+                                      className="w-full h-full object-cover rounded-lg"
+                                    />
+                                    <div className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-lg">
+                                      <span className="text-white text-4xl">▶</span>
+                                    </div>
+                                  </div>
+                                )}
+                              </div>
+                            </>
+                          )}
+                          {project.youtubeLink2 && (
+                            <>
+                               <div className="text-base -mb-3">캡스톤 프로젝트(2) 데모영상</div>
+                              <div className="w-full my-4 aspect-video">
+                                {showYoutube2 ? (
+                                  <iframe
+                                    className="w-full h-full rounded-lg"
+                                    src={`https://www.youtube.com/embed/${extractYouTubeId(project.youtubeLink2)}?autoplay=1`}
+                                    title="YouTube video player"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                  ></iframe>
+                                ) : (
+                                  <div
+                                    className="w-full h-full relative cursor-pointer"
+                                    onClick={() => setShowYoutube2(true)}
+                                  >
+                                    <img
+                                      src={`https://img.youtube.com/vi/${extractYouTubeId(project.youtubeLink2)}/hqdefault.jpg`}
+                                      alt="YouTube Thumbnail"
+                                      className="w-full h-full object-cover rounded-lg"
+                                    />
+                                    <div className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-lg">
+                                      <span className="text-white text-4xl">▶</span>
+                                    </div>
+                                  </div>
+                                )}
+                              </div>
+                            </>
+                          )}
+                          <div>k</div>
+                          <div>k</div>
+
                         </Projectpopup>
                       ))}
                     </div>
@@ -373,8 +502,8 @@ function App() {
                 </div>
               )}
             </div>
-          </ReactFullpage.Wrapper>
-        )}
+          </ReactFullpage.Wrapper>);
+        }}
       />
     </div>
   );

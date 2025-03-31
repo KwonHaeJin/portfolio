@@ -36,7 +36,7 @@ const Projectpopup = ({ isOpen, onClose, children, title, imgsrc }: ProjectModal
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-90"
           >
-            <Dialog.Panel className="w-full flex flex-col p-6 overflow-hidden rounded-2xl bg-white shadow-xl justify-center items-center">
+            <Dialog.Panel className="w-full h-[90vh] flex flex-col p-6 overflow-y-auto rounded-2xl bg-white shadow-xl justify-center items-center">
             <button
                   type="button"
                   className="pl-[76vw] xl:pl-[93vw]"
@@ -48,11 +48,12 @@ const Projectpopup = ({ isOpen, onClose, children, title, imgsrc }: ProjectModal
               <Dialog.Title className="flex items-center justify-center rounded-xl text-2xl bg-orange-500 text-white font-empha w-[60vw] h-9 mb-2 xl:text-xl xl:w-52 xl:h-9 xl:mb-4">
                 {title}
               </Dialog.Title>
+              <div className="overflow-y-auto">
               {imgsrc && (
-                <img src={imgsrc} className='w-[75vw] h-[18vh]'/>
+                <img src={imgsrc} className='w-[75vw] h-[16vh]'/>
               )}
-              <div className="text-sm text-gray-600">{children}</div>
-              
+              <div className="w-full break-words">{children}</div>
+              </div>
             </Dialog.Panel>
           </Transition.Child>
         </div>

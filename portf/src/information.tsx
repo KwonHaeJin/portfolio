@@ -47,8 +47,12 @@ export const projectData = [
       • 어플 디자인, 캘린더, <br className="inline md:hidden"/><span className="inline md:hidden">&nbsp;&nbsp;</span>Graph, 카카오 <br className="hidden md:inline"/>
       <span className="hidden md:inline">&nbsp;&nbsp;</span>로그인, <br className="inline md:hidden"/><span className="inline md:hidden">&nbsp;&nbsp;</span>API 연결 등 담당
     </span>,
-   
-    ]
+    ],
+    onePoint: '사회적 고립감 해소를 위한 졸업작품으로 진행한 캡스톤 프로젝트',
+    githubLink:'https://github.com/EMO-D/EMO-D_client.git',
+    youtubeLink: 'https://youtu.be/qrdG-0q9Dt8?si=gLv-c3qhjJtlsas4',
+    youtubeLink2: 'https://youtu.be/d0AWbpnrAkQ?si=7UGHsINR00QkQp8y'
+
   },
   {
     title: '<당신>의 마이홈피',
@@ -60,7 +64,9 @@ export const projectData = [
       '• 미니홈피 리메이킹 웹',
       <span>• 화면 디자인, API 연결, <br className="inline md:hidden"/><span className="inline md:hidden">&nbsp;&nbsp;</span>로그인 및 <br className="hidden md:inline"/>
       <span className="hidden md:inline">&nbsp;&nbsp;</span>회원가입 등 <br className="inline md:hidden"/><span className="inline md:hidden">&nbsp;&nbsp;</span>담당</span>,
-    ]
+    ],
+    onePoint: '미니홈피 리메이킹 및 팀원 개인별 역량 성장을 위해 진행한 프로젝트',
+    githubLink:'https://github.com/EWOOTZ/client.git',
   },
   {
     title: 'Study Buddy',
@@ -73,8 +79,10 @@ export const projectData = [
       <span className="inline">• API 연결, WebView, <br className="inline md:hidden"/><span className="inline md:hidden">&nbsp;&nbsp;</span>전체 화면 <br className="hidden xl:inline"/>
       <span className="hidden xl:inline">&nbsp;&nbsp;</span>구현 <br className="hidden md:inline xl:hidden"/>
       <span className="hidden md:inline xl:hidden">&nbsp;&nbsp;</span>등 담당</span>,
-      
-    ]
+    ],
+    onePoint: '산학협력프로젝트로 (주)엔가든과 웹앱 제작',
+    githubLink:'https://github.com/KwonHaeJin/StudyApp.git',
+    githubLink2:'https://github.com/KwonHaeJin/StudyBuddyNative2.git',
   },
   {
     title: 'Portfolio',
@@ -84,6 +92,8 @@ export const projectData = [
       <span className="hidden xl:inline">• 2025.02.09 ~ 2025.12.13</span>,
       '• 1인 프로젝트',
       <span className="inline">• 개인 포트폴리오를 위한 <br className="inline md:hidden"/><span className="inline md:hidden">&nbsp;&nbsp;</span>웹사이트</span>,
-    ]
+    ],
+    onePoint: '개인 역량 향상 및 포트폴리오를 위한 웹',
+    githubLink:'https://github.com/KwonHaeJin/portfolio.git',
   }
 ];
