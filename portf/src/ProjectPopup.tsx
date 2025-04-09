@@ -36,12 +36,11 @@ const Projectpopup = ({ isOpen, onClose, children, title, imgsrc }: ProjectModal
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-90"
           >
-            <Dialog.Panel className="w-full h-[90vh] flex flex-col p-6 overflow-y-auto rounded-2xl bg-white shadow-xl justify-center items-center">
+            <Dialog.Panel className="w-full h-[90vh] flex flex-col p-6 overflow-y-auto rounded-2xl bg-white shadow-xl justify-center items-center md:px-12">
             <button
                   type="button"
                   className="pl-[76vw] xl:pl-[93vw]"
-                  onClick={onClose}
-                  
+                  onClick={onClose}             
                 >
                     <img src={Close} className='w-4 h-4'/>
                 </button>
@@ -50,7 +49,7 @@ const Projectpopup = ({ isOpen, onClose, children, title, imgsrc }: ProjectModal
               </Dialog.Title>
               <div className="overflow-y-auto">
               {imgsrc && (
-                <img src={imgsrc} className='w-[75vw] h-[16vh]'/>
+                <img src={imgsrc} className='w-[75vw] h-[16vh] md:h-[20vh]'/>
               )}
               <div className="w-full break-words">{children}</div>
               </div>
