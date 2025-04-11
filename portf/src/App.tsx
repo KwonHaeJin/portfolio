@@ -441,73 +441,85 @@ function App() {
                                 ))}
                               </div>
                             </div>
-                              <div className="font-empha text-[20px] md:text-[30px]">프로젝트 설명</div>
-                              {project.youtubeLink && (
-                                <>
-                                  <div className="text-base text-[14px] -mb-3">캡스톤 프로젝트(1) 데모영상</div>
-                                  <div className="w-full my-4 aspect-video">
-                                    {showYoutube ? (
-                                      <iframe
-                                        className="w-full h-full rounded-lg"
-                                        src={`https://www.youtube.com/embed/${extractYouTubeId(project.youtubeLink)}?autoplay=1`}
-                                        title="YouTube video player"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowFullScreen
-                                      ></iframe>
-                                    ) : (
-                                      <div
-                                        className="w-full h-full relative cursor-pointer"
-                                        onClick={() => setShowYoutube(true)}
-                                      >
-                                        <img
-                                          src={`https://img.youtube.com/vi/${extractYouTubeId(project.youtubeLink)}/hqdefault.jpg`}
-                                          alt="YouTube Thumbnail"
-                                          className="w-full h-full object-cover rounded-lg"
-                                        />
-                                        <div className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-lg">
-                                          <span className="text-white text-4xl">▶</span>
-                                        </div>
+                            <div className="font-empha text-[20px] md:text-[30px]">프로젝트 설명</div>
+                            {project.youtubeLink && (
+                              <>
+                                <div className="text-base text-[14px] -mb-3">• 캡스톤 프로젝트(1) 데모영상</div>
+                                <div className="w-full my-4 aspect-video">
+                                  {showYoutube ? (
+                                    <iframe
+                                      className="w-full h-full rounded-lg"
+                                      src={`https://www.youtube.com/embed/${extractYouTubeId(project.youtubeLink)}?autoplay=1`}
+                                      title="YouTube video player"
+                                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                      allowFullScreen
+                                    ></iframe>
+                                  ) : (
+                                    <div
+                                      className="w-full h-full relative cursor-pointer"
+                                      onClick={() => setShowYoutube(true)}
+                                    >
+                                      <img
+                                        src={`https://img.youtube.com/vi/${extractYouTubeId(project.youtubeLink)}/hqdefault.jpg`}
+                                        alt="YouTube Thumbnail"
+                                        className="w-full h-full object-cover rounded-lg"
+                                      />
+                                      <div className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-lg">
+                                        <span className="text-white text-4xl">▶</span>
                                       </div>
-                                    )}
-                                  </div>
-                                </>
-                              )}
-                              {project.youtubeLink2 && (
-                                <>
-                                  <div className="text-base text-[14px] -mb-3">캡스톤 프로젝트(2) 데모영상</div>
-                                  <div className="w-full my-4 aspect-video">
-                                    {showYoutube2 ? (
-                                      <iframe
-                                        className="w-full h-full rounded-lg"
-                                        src={`https://www.youtube.com/embed/${extractYouTubeId(project.youtubeLink2)}?autoplay=1`}
-                                        title="YouTube video player"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowFullScreen
-                                      ></iframe>
-                                    ) : (
-                                      <div
-                                        className="w-full h-full relative cursor-pointer"
-                                        onClick={() => setShowYoutube2(true)}
-                                      >
-                                        <img
-                                          src={`https://img.youtube.com/vi/${extractYouTubeId(project.youtubeLink2)}/hqdefault.jpg`}
-                                          alt="YouTube Thumbnail"
-                                          className="w-full h-full object-cover rounded-lg"
-                                        />
-                                        <div className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-lg">
-                                          <span className="text-white text-4xl">▶</span>
-                                        </div>
+                                    </div>
+                                  )}
+                                </div>
+                              </>
+                            )}
+                            {project.youtubeLink2 && (
+                              <>
+                                <div className="text-base text-[14px] -mb-3">• 캡스톤 프로젝트(2) 데모영상</div>
+                                <div className="w-full my-4 aspect-video">
+                                  {showYoutube2 ? (
+                                    <iframe
+                                      className="w-full h-full rounded-lg"
+                                      src={`https://www.youtube.com/embed/${extractYouTubeId(project.youtubeLink2)}?autoplay=1`}
+                                      title="YouTube video player"
+                                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                      allowFullScreen
+                                    ></iframe>
+                                  ) : (
+                                    <div
+                                      className="w-full h-full relative cursor-pointer"
+                                      onClick={() => setShowYoutube2(true)}
+                                    >
+                                      <img
+                                        src={`https://img.youtube.com/vi/${extractYouTubeId(project.youtubeLink2)}/hqdefault.jpg`}
+                                        alt="YouTube Thumbnail"
+                                        className="w-full h-full object-cover rounded-lg"
+                                      />
+                                      <div className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-lg">
+                                        <span className="text-white text-4xl">▶</span>
                                       </div>
-                                    )}
-                                  </div>
-                                </>
-                              )}
-                              {project.discription2 && 
-                                project.discription2.map((line, index) => (
-                                  <div key={index} className="text-[16px] leading-7">
+                                    </div>
+                                  )}
+                                </div>
+                              </>
+                            )}
+                            {project.discription2 &&
+                              project.discription2.map((line, index) => (
+                                <div key={index} className="text-[16px] leading-7">
+                                  {line}
+                                </div>
+                              ))}
+                            {project.responsibility && (
+                              <div>
+                                <div className="font-empha text-[20px] mt-5 md:text-[30px]">담당한 기능</div>
+                                <div className="flex flex-col gap-[10px]">
+                                {project.responsibility.map((line, index) => (
+                                  <div key={index} className="text-[16px] leading-5">
                                     {line}
                                   </div>
                                 ))}
+                              </div>
+                              </div>
+                            )}
                           </Projectpopup>
                         ))}
                       </div>

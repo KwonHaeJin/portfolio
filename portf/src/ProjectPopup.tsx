@@ -36,7 +36,7 @@ const Projectpopup = ({ isOpen, onClose, children, title, imgsrc }: ProjectModal
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-90"
           >
-            <Dialog.Panel className="w-full h-[90vh] flex flex-col p-6 overflow-y-auto rounded-2xl bg-white shadow-xl justify-center items-center md:px-12">
+            <Dialog.Panel className="w-full h-[90vh] flex flex-col p-6 overflow-y-auto rounded-2xl bg-white shadow-xl justify-start items-center md:px-12">
             <button
                   type="button"
                   className="pl-[76vw] xl:pl-[93vw]"
