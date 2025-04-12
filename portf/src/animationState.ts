@@ -3,15 +3,13 @@ import { useEffect, Dispatch, SetStateAction } from "react";
 export function IntroAni(
   myname: string[],
   setVisibleMessages: Dispatch<SetStateAction<string[]>>,
-  setShowLine: Dispatch<SetStateAction<boolean>>,
   setStartAdding: Dispatch<SetStateAction<boolean>>
 ) {
   useEffect(() => {
     setVisibleMessages([myname[0]]);
-    setShowLine(true);
     setTimeout(() => {
       setStartAdding(true);
-    }, 500);
+    }, 300);
   }, []);
 }
 
@@ -28,7 +26,7 @@ export function IntroMessage(
     const interval = setInterval(() => {
       setVisibleMessages((prev) => [...prev, myname[index + 1]]);
       setIndex((prevIndex) => prevIndex + 1);
-    }, 500);
+    }, 300);
 
     return () => clearInterval(interval);
   }, [startAdding, index]);
@@ -37,20 +35,17 @@ export function IntroMessage(
 export function ShowScrollHint(
   visibleMessages: string[],
   myname: string[],
-  showLine: boolean,
   setShowScrollHint: Dispatch<SetStateAction<boolean>>
 ) {
   useEffect(() => {
-    if (visibleMessages.length === myname.length && showLine) {
+    if (visibleMessages.length === myname.length) {
         const timeout = setTimeout(() => {
             setShowScrollHint(true);
           }, 200);
     
           return () => clearTimeout(timeout);
         }
-      }, [visibleMessages, myname, showLine]);
-
-
+      }, [visibleMessages, myname]);
 }
 
 export function ChainedAni(

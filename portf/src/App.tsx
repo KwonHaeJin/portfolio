@@ -33,9 +33,9 @@ function App() {
   const [fullpageApi, setFullpageApi] = useState<any>(null);
   const XL = useMediaQuery('(min-width: 1280px)');
 
-  IntroAni(myname, setVisibleMessages, setShowLine, setStartAdding);
+  IntroAni(myname, setVisibleMessages, setStartAdding);
   IntroMessage(myname, startAdding, index, setVisibleMessages, setIndex);
-  ShowScrollHint(visibleMessages, myname, showLine, setShowScrollHint);
+  ShowScrollHint(visibleMessages, myname, setShowScrollHint);
   ChainedAni(animateProfile, setShowadvange);
   ChainedAni(showcertifi, setShowskill);
   ChainedAni(showskill, setShowEdu);
@@ -127,36 +127,23 @@ function App() {
             <ReactFullpage.Wrapper>
               {/* 첫번째 섹션 표지 */}
               <div className="section first-section">
-                <div className="w-screen flex flex-col items-start mt-4 ml-4">
+                <div className="w-full flex flex-col items-start mt-4 ml-4">
                   {visibleMessages.slice(0).map((msg, i) => {
                     const absoluteIndex = i;
                     const isLastTwo = absoluteIndex >= myname.length - 2; // 전체 기준 마지막 2개 확인
-                    const isWithLine = visibleMessages[absoluteIndex] === "Front-end Developer";
-
                     return (
                       <motion.div
                         key={i}
-                        className={`font-title text-center pl-4 pt-3 md:mb-2 md:mt-2 ${isLastTwo ? "text-[36px] md:text-6xl" : "text-[28px] md:text-5xl"
+                        className={`font-title pl-4 pt-3 md:mb-1 md:mt-1 ${isLastTwo ? "text-[36px] md:text-[76px] text-purple-600" : "text-[28px] md:text-[58px] text-black"
                           }`}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0, x: -50, y:-20 }}
+                        animate={{ opacity: 1, x:0, y: 0 }}
                         transition={{ duration: 0.8, ease: "easeInOut" }}
                       >
                         <div>{msg}</div>
-
-                        {isWithLine && showLine && (
-                          <motion.div
-                            className="bg-slate-400 h-[1.5px] mt-2 ml-[-16px] md:mt-4 md:mb-4 md:h-[2px]"
-                            initial={{ width: "100vh", x: 100, opacity: 0 }}
-                            animate={{ width: "100vh", x: 0, opacity: 1 }}
-                            transition={{ duration: 1, ease: "easeInOut" }}
-                          />
-                        )}
                       </motion.div>
                     );
                   })}
-
-
                   {showScrollHint && (
                     <motion.div
                       className="h-10 w-full text-base text-gray-700 flex flex-row items-center justify-center absolute bottom-4 lg:bottom-6"
@@ -200,13 +187,13 @@ function App() {
                     </div>
                     <div className="flex-col flex justify-start items-start">
                       <div className="flex flex-row items-center pb-6 md:mb-0 lg:mb-4 xl:mb-10">
-                        <p className="text-xl font-empha md:text-4xl lg:text-4xl xl:text-[36px] ">Contact</p>
+                        <p className="text-xl font-subtitle md:text-4xl lg:text-4xl xl:text-[36px] ">Contact</p>
                         <span className="ml-2 w-[61vw] h-[1px] bg-black md:w-[66vw] lg:w-[67vw] xl:w-[38vw] xl:h-[2px]"></span>
                       </div>
                       <div className="bg-white rounded-lg w-[82vw] p-2 md:p-4 xl:w-[49vw]">
                         {contactInfo.map((item, index) => (
                           <div key={index} className="flex flex-row xl:justify-between xl:mx-5">
-                            <p className="text-lg font-semibold -mb-1 md:text-3xl md:mr-4">{item.label}</p>
+                            <p className="text-lg font-empha -mb-1 md:text-3xl md:mr-4">{item.label}</p>
                             {item.isLink ? (
                               <a
                                 href={item.value}
@@ -232,7 +219,7 @@ function App() {
                       animate={animateProfile ? { opacity: 1, x: 0 } : {}}
                       transition={{ duration: 1, ease: "easeOut" }}
                     >
-                      <p className="flex flex-row items-center justify-start w-full pb-6 font-empha text-xl md:text-4xl md:mb-4 lg:text-4xl xl:mb-8 xl:text-[36px]">
+                      <p className="flex flex-row items-center justify-start w-full pb-6 font-subtitle text-xl md:text-4xl md:mb-4 lg:text-4xl xl:mb-8 xl:text-[36px]">
                         Advantage
                         <span className="ml-2 w-[53vw] h-[1px] bg-black md:w-[59vw] lg:w-[62vw] xl:w-[32vw] xl:h-[2px]"></span>
                       </p>
@@ -241,7 +228,7 @@ function App() {
                           <p className="text-lg md:text-3xl lg:text-4xl xl:text-[28px]">🧐</p>
                           <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[28px]">
                             <span className="text-purple-600">세심</span>하고  <span className="text-purple-600">침착</span>한 성격을 바탕으로
-                            <span className="text-purple-600"> 작은<br className="md:hidden" /><span className="hidden md:inline">&nbsp;</span>디테일</span><br className="hidden md:inline xl:hidden" />까지 <br className="hidden xl:inline"></br>놓치지 않습니다.</p>
+                            <span className="text-purple-600"> 작은<br className="md:hidden" /><span className="hidden md:inline">&nbsp;</span>디테일</span><br className="hidden md:inline xl:hidden" />까지 놓치지 않습니다.</p>
                         </div>
                         <div className="mb-2 flex flex-row md:flex-row lg:flex-row">
                           <p className="text-lg md:text-3xl lg:text-4xl xl:text-[28px]">🏃</p>
@@ -250,11 +237,11 @@ function App() {
                         </div>
                         <div className="mb-2 flex flex-row md:flex-row lg:flex-row">
                           <p className="text-lg md:text-3xl lg:text-4xl xl:text-[28px]">👌</p>
-                          <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[28px]">어려운 문제도 <span className="text-purple-600">끈기</span>를 가지고 끝까지 <br className="md:hidden" />해결하려고 <br className="hidden md:inline" />노력합니다.</p>
+                          <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[28px]">어려운 문제도 <span className="text-purple-600">끈기</span>를 가지고 끝까지 <br className="md:hidden" />해결하려고 노력합니다.</p>
                         </div>
                         <div className="flex flex-row md:flex-row lg:flex-row">
                           <p className="text-lg md:text-3xl lg:text-4xl xl:text-[28px]">👂</p>
-                          <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-4 xl:text-[28px]">상대방의 말에 귀 기울이고 본인의 의견을<br className="md:hidden" /><span className="hidden md:inline">&nbsp;</span>명확<br className="hidden md:inline xl:hidden" />하게 <br className="hidden xl:inline" />전달할 수 있는 <span className="text-purple-600">커뮤니케이션 <br className="md:hidden" />능력</span>을 갖추고 <br className="hidden md:inline xl:hidden" />있습니다.</p>
+                          <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-4 xl:text-[28px]">상대방의 말에 귀 기울이고 본인의 의견을<br className="md:hidden" /><span className="hidden md:inline">&nbsp;</span>명확<br className="hidden md:inline xl:hidden" />하게 전달할 수 있는 <span className="text-purple-600">커뮤니케이션 <br className="md:hidden" />능력</span>을 갖추고 <br className="hidden md:inline xl:hidden" />있습니다.</p>
                         </div>
                       </div>
                     </motion.div>
@@ -272,13 +259,13 @@ function App() {
                   >
                     <div className="flex-col flex justify-start items-start">
                       <div className="flex flex-row items-center pb-6 md:mb-4 lg:mb-24 xl:mb-16">
-                        <p className="text-xl font-empha md:text-4xl">Certificate</p>
+                        <p className="text-xl font-subtitle md:text-4xl">Certificate</p>
                         <span className="ml-2 w-56 h-[1px] bg-black md:w-[56vw] xl:w-[16vw] xl:h-[2px]"></span>
                       </div>
                       <div className="bg-white rounded-lg w-[82vw] pl-4 pt-2 xl:pt-6 xl:w-[30vw]">
                         {certificates.map((cert, index) => (
                           <div key={index} className="flex flex-row md:flex-row lg:flex-row">
-                            <p className="text-lg font-semibold -mb-1 md:text-3xl">{cert.name}</p>
+                            <p className="text-lg font-empha -mb-1 md:text-3xl">{cert.name}</p>
                             <p className="text-lg ml-2 mb-2 md:text-3xl md:mb-4 xl:mb-6">{cert.date}</p>
                           </div>
                         ))}
@@ -295,7 +282,7 @@ function App() {
                       transition={{ duration: 1, ease: "easeOut" }}
                     >
                       <div className="flex flex-row items-center pb-5 md:mb-4 lg:mb-24 xl:mb-16">
-                        <p className="text-xl font-empha md:text-4xl">Skills</p>
+                        <p className="text-xl font-subtitle md:text-4xl">Skills</p>
                         <span className="ml-2 w-[68vw] h-[1px] bg-black xl:h-[2px] xl:w-[24vw]"></span>
                       </div>
                       {skills.map((group, index) => (
@@ -324,15 +311,15 @@ function App() {
                     >
                       <div className="flex-col flex justify-start items-start">
                         <div className="flex flex-row items-center pb-6 md:mb-4 lg:mb-24 xl:mb-16">
-                          <p className="text-xl font-empha md:text-4xl ">Education</p>
+                          <p className="text-xl font-subtitle md:text-4xl ">Education</p>
                           <span className="ml-2 w-[56vw] h-[1px] bg-black md:w-[58vw] xl:h-[2px] xl:w-[18vw]"></span>
                         </div>
                         <div className="bg-white rounded-lg w-[82vw] pl-4 pt-4 xl:w-[31vw]">
                           {education.map((edu, index) => (
                             <div key={index} className="mb-4">
                               <p className="text-lg font-sans md:text-3xl md:mb-2 xl:mb-2">{edu.period}</p>
-                              <p className="text-lg font-semibold md:text-3xl">{edu.school}</p>
-                              {edu.grade && <p className="text-lg font-semibold md:text-3xl">{edu.grade}</p>}
+                              <p className="text-lg font-empha md:text-3xl">{edu.school}</p>
+                              {edu.grade && <p className="text-lg font-empha md:text-3xl">{edu.grade}</p>}
                             </div>
                           ))}
                         </div>
@@ -352,7 +339,7 @@ function App() {
                   >
                     <div className="flex flex-row items-center pb-6 xl:mb-16">
                       <span className="mr-2 w-[34vw] h-[1px] bg-black xl:h-[2px] xl:w-[20vw]"></span>
-                      <p className="text-xl font-empha md:text-4xl">Projects</p>
+                      <p className="text-xl font-subtitle md:text-4xl">Projects</p>
                       <span className="ml-2 w-[34vw] h-[1px] bg-black xl:h-[2px] xl:w-[20vw]"></span>
                     </div>
                   </motion.div>

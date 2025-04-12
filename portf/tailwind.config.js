@@ -6,7 +6,8 @@ module.exports = {
       fontFamily:{
         sans:['Basic'],
         'empha' : 'empha',
-        'title' : 'title'
+        'title' : 'title',
+        'subtitle' : 'subtitle'
       },
       
     },

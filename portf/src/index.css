@@ -18,10 +18,15 @@
 
 @font-face {
   font-family: 'empha';
-  src: url('./fonts/ONE Mobile OTF Bold.otf');
+  src: url('./fonts/ONE Mobile Title.ttf');
 }
 
 @font-face {
   font-family: 'title';
   src: url('./fonts/SB 어그로 B.ttf');
+}
+
+@font-face {
+  font-family: 'subtitle';
+  src: url('./fonts/SMUSnowflake-Bold.otf');
 }
