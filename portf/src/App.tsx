@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { useEffect, useState } from "react";
+import React from 'react';
 import { motion } from "framer-motion";
 import "./App.css";
 import { useMediaQuery } from "./useMediaQuery";
@@ -127,37 +128,35 @@ function App() {
               {/* 첫번째 섹션 표지 */}
               <div className="section first-section">
                 <div className="w-screen flex flex-col items-start mt-4 ml-4">
-                  {visibleMessages.length > 0 && (
-                    <motion.div
-                      className="text-[28px] font-empha text-center p-4 md:text-5xl"
-                      initial={{ opacity: 0, x: -100 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 1, ease: "easeInOut" }}
-                    >
-                      {visibleMessages[0]}
-                    </motion.div>
-                  )}
+                  {visibleMessages.slice(0).map((msg, i) => {
+                    const absoluteIndex = i;
+                    const isLastTwo = absoluteIndex >= myname.length - 2; // 전체 기준 마지막 2개 확인
+                    const isWithLine = visibleMessages[absoluteIndex] === "Front-end Developer";
 
-                  {/* 실선 */}
-                  {showLine && (
-                    <motion.div
-                      className="bg-slate-400 h-[1.5px] ml-[-16px] md:mt-4 md:mb-4 md:h-[2px]"
-                      initial={{ width: "0%", x: -100 }}
-                      animate={{ width: "85%", x: 0 }}
-                      transition={{ duration: 1, ease: "easeInOut" }}
-                    />
-                  )}
-                  {visibleMessages.slice(1).map((msg, i) => (
-                    <motion.div
-                      key={i}
-                      className="text-[28px] font-empha text-center pl-4 pt-3 md:text-5xl md:mb-2 md:mt-2"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.8, ease: "easeInOut" }}
-                    >
-                      {msg}
-                    </motion.div>
-                  ))}
+                    return (
+                      <motion.div
+                        key={i}
+                        className={`font-title text-center pl-4 pt-3 md:mb-2 md:mt-2 ${isLastTwo ? "text-[36px] md:text-6xl" : "text-[28px] md:text-5xl"
+                          }`}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, ease: "easeInOut" }}
+                      >
+                        <div>{msg}</div>
+
+                        {isWithLine && showLine && (
+                          <motion.div
+                            className="bg-slate-400 h-[1.5px] mt-2 ml-[-16px] md:mt-4 md:mb-4 md:h-[2px]"
+                            initial={{ width: "100vh", x: 100, opacity: 0 }}
+                            animate={{ width: "100vh", x: 0, opacity: 1 }}
+                            transition={{ duration: 1, ease: "easeInOut" }}
+                          />
+                        )}
+                      </motion.div>
+                    );
+                  })}
+
+
                   {showScrollHint && (
                     <motion.div
                       className="h-10 w-full text-base text-gray-700 flex flex-row items-center justify-center absolute bottom-4 lg:bottom-6"
@@ -407,32 +406,23 @@ function App() {
                             imgsrc={project?.imgsrc}
                           >
                             <div className="flex flex-col mt-2 mb-3">
-                              <p className="font-empha text-[20px] whitespace-nowrap mr-1 md:text-[30px]">소개</p>
+                              <p className="font-empha text-[20px] whitespace-nowrap mr-1 md:text-[30px]">🙌 소개</p>
                               <p className="text-[16px] break-words md:text-[24px]">{project.onePoint}</p>
                             </div>
                             <div className="flex flex-row mt-2 mb-3">
-                              <p className="font-empha text-[20px] whitespace-nowrap mr-1 md:text-[30px]">Github: </p>
+                              <p className="font-empha text-[20px] whitespace-nowrap mr-1 md:text-[30px]">🔗 Github: </p>
                               <a
                                 href={project.githubLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-blue-500 underline text-[18px] break-all mr-4 md:text-[24px]"
                               >
-                                🔗링크 보기
+                                링크 보기
                               </a>
-                              {project.githubLink2 && (
-                                <a
-                                  href={project.githubLink2}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="text-blue-500 underline text-[18px] break-all md:text-[24px]"
-                                >
-                                  🔗링크 보기
-                                </a>
-                              )}
+
                             </div>
                             <div className="flex flex-col mt-2 mb-3">
-                              <p className="font-empha text-[20px] md:text-[30px]">프로젝트 개요</p>
+                              <p className="font-empha text-[20px] md:text-[30px]">🧩 프로젝트 개요</p>
                               <div className="text-[16px] flex flex-col gap-[10px] md:text-[24px] md:gap-[14px]">
                                 {project.overview.map((line, index) => (
                                   <div key={index} className="leading-7">
@@ -441,7 +431,7 @@ function App() {
                                 ))}
                               </div>
                             </div>
-                            <div className="font-empha text-[20px] md:text-[30px]">프로젝트 설명</div>
+                            <div className="font-empha text-[20px] md:text-[30px]">🗂️ 프로젝트 설명</div>
                             {project.youtubeLink && (
                               <>
                                 <div className="text-base text-[14px] -mb-3">• 캡스톤 프로젝트(1) 데모영상</div>
@@ -510,16 +500,25 @@ function App() {
                               ))}
                             {project.responsibility && (
                               <div>
-                                <div className="font-empha text-[20px] mt-5 md:text-[30px]">담당한 기능</div>
+                                <div className="font-empha text-[20px] mt-5 md:text-[30px]">🙋‍♀️ 담당한 기능</div>
                                 <div className="flex flex-col gap-[10px]">
-                                {project.responsibility.map((line, index) => (
-                                  <div key={index} className="text-[16px] leading-5">
+                                  {project.responsibility.map((line, index) => (
+                                    <div key={index} className="text-[16px] leading-5">
+                                      {line}
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+                            <div className="font-empha text-[20px] mt-5 mb-2 md:text-[30px]">✍️ 느낀점</div>
+                            {project.feedback &&
+                              <div className="flex flex-col gap-[12px]">
+                                {project.feedback.map((line, index) => (
+                                  <div key={index} className="text-[16px] leading-6">
                                     {line}
                                   </div>
                                 ))}
-                              </div>
-                              </div>
-                            )}
+                              </div>}
                           </Projectpopup>
                         ))}
                       </div>

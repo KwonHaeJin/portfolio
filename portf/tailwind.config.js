@@ -5,7 +5,8 @@ module.exports = {
     extend: {
       fontFamily:{
         sans:['Basic'],
-        'empha' : 'empha'
+        'empha' : 'empha',
+        'title' : 'title'
       },
       
     },

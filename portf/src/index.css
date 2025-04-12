@@ -14,7 +14,14 @@
 @font-face {
   font-family: 'Basic';
   src: url('./fonts/NanumSquareNeo-Variable.ttf');
+}
 
+@font-face {
   font-family: 'empha';
   src: url('./fonts/ONE Mobile OTF Bold.otf');
+}
+
+@font-face {
+  font-family: 'title';
+  src: url('./fonts/SB 어그로 B.ttf');
 }
