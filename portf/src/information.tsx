@@ -186,9 +186,14 @@ export const projectData = [
       <Detail>1. 회원 모두가 소통할 수 있는 커뮤니티 공간<br />
         <span>&nbsp;&nbsp;</span>• 소원나무, 게시판, 느린 우체통</Detail>,
       <DesTitle text="ETC" />,
-      <Detail>1. 개인별 링크 공유 기능<br />2. 마이페이지 수정 기능<br />3. 로그인 및 회원 가입</Detail>, 
+      <Detail>1. 개인별 링크 공유 기능<br />2. 마이페이지 수정 기능<br />3. 로그인 및 회원 가입</Detail>,
       <DesTitle text="실제 구현 화면" />,
-      <img src={EWOOTZ4} />, <img src={EWOOTZ3} />, <img src={EWOOTZ2} />, <img src={EWOOTZ1} />
+      <div className="xl:grid xl:grid-cols-2">
+        <img src={EWOOTZ4} className="xl:object-cover xl:h-[322px]"/>
+         <img src={EWOOTZ3} className="xl:object-cover"/>
+          <img src={EWOOTZ2} className="xl:object-cover xl:h-[322px]" />
+           <img src={EWOOTZ1} className="xl:object-cover"/>
+      </div>
     ], responsibility: [
       <Title text="FIGMA" />,
       <Detail>• 피그마를 이용해 웹 화면 디자인 구성</Detail>,
@@ -248,8 +253,8 @@ export const projectData = [
     discription2: [
       <DesTitle text="Study Room 화면" />,
       <Detail>favorite에는 팔로우한 유저 노출<br />
-      other user에는 전체 유저 랜덤으로 노출<br />
-      스터디 중인 유저 클릭 시 스터디 참여 요청<br /></Detail>,
+        other user에는 전체 유저 랜덤으로 노출<br />
+        스터디 중인 유저 클릭 시 스터디 참여 요청<br /></Detail>,
       <DesTitle text="화상 채팅" />,
       <Detail>web RTC를 활용한 유저 간 실시간 화상 채팅</Detail>,
       <DesTitle text="Todolist" />,
@@ -261,14 +266,18 @@ export const projectData = [
       <Detail>개별 피드 확인 및 좋아요 기능</Detail>,
       <Detail>유저 검색 및 팔로우/언팔로우 기능</Detail>,
       <DesTitle text="실제 구현 화면" />,
-      <img src={SB1} />, <img src={SB2} />, <img src={SB3} />, <img src={SB4} />
-    ],
+      <div className="md:grid md:grid-cols-2 md:justify-between">
+        <img src={SB1} />
+        <img src={SB2} />
+        <img src={SB3} />
+        <img src={SB4} />
+      </div>],
     responsibility: [
       <Title text="Web" />,
       <Detail>• webRTC를 제외한 모든 화면 구현 및 통신</Detail>,
       <Title text="App" />,
       <Detail>• React로 구현한 웹을 React Native에서 <span className="inline md:hidden"><br />&nbsp;&nbsp;</span>Webview로 띄우기</Detail>,
-      <Detail>• React Native에서 bottombar로 화면 간 이동 <span className="inline md:hidden"><br />&nbsp;&nbsp;</span>제어 및 bottombar 커스텀</Detail>,
+      <Detail>• React Native에서 bottombar로 화면 간 이동 <span className="inline md:hidden"><br />&nbsp;&nbsp;</span>제어 및 <span className="hidden md:inline"><br />&nbsp;&nbsp;</span>bottombar 커스텀</Detail>,
       <Detail>• web과 app 사이 데이터 통신</Detail>,
     ],
     feedback: [
@@ -296,13 +305,13 @@ export const projectData = [
       <Overview text="나를 소개하는 포트폴리오 웹사이트를 구현" />
 
     ], discription2: [
-      <div>• FullPage 스크롤 및 다양한 motion 사용</div>,
-      <div>• TailwindCSS를 통한 반응형 화면 구현</div>,
+      <Detail>• FullPage 스크롤 및 다양한 motion 사용</Detail>,
+      <Detail>• TailwindCSS를 통한 반응형 화면 구현</Detail>,
     ],
     feedback: [
-      <div>&nbsp;&nbsp;개인 포트폴리오를 만들며 처음으로 기획부터 구현까지 <Emphas text="모든 과정을 혼자서 책임" />지는 경험을 했습니다. 팀 프로젝트에만 익숙했던 만큼, 누군가의 도움 없이 문제를 해결해야 한다는 점이 처음엔 막막하게 느껴졌지만, 그 과정을 통해 <Emphas text="스스로 해결책을 찾아가는 힘" />과 <Emphas text="자립심" />을 기를 수 있었습니다.</div>,
-      <div>&nbsp;&nbsp;또한, 처음 접하는 <Emphas text="TailwindCSS" />는 초반에는 낯설고 불편하게 느껴졌지만 점차 익숙해지며 <Emphas text="반응형 화면을 쉽게 구현" />할 수 있다는 장점을 체감하게 되었고, 많은 개발자들이 선호하는 이유를 몸소 느낄 수 있었습니다.</div>,
-      <div>&nbsp;&nbsp;무엇보다 이번 프로젝트는 웹 개발에 그치지 않고 <Emphas text="‘어떻게 하면 나를 더 잘 표현할 수 있을까’" />에 대해 고민하는 시간이 되기도 했습니다. 개발 역량뿐만 아니라 개발자로서의 나를 <Emphas text="스스로 돌아보는 계기" />가 되었습니다.</div>
+      <Paragraph>&nbsp;&nbsp;개인 포트폴리오를 만들며 처음으로 기획부터 구현까지 <Emphas text="모든 과정을 혼자서 책임" />지는 경험을 했습니다. 팀 프로젝트에만 익숙했던 만큼, 누군가의 도움 없이 문제를 해결해야 한다는 점이 처음엔 막막하게 느껴졌지만, 그 과정을 통해 <Emphas text="스스로 해결책을 찾아가는 힘" />과 <Emphas text="자립심" />을 기를 수 있었습니다.</Paragraph>,
+      <Paragraph>&nbsp;&nbsp;또한, 처음 접하는 <Emphas text="TailwindCSS" />는 초반에는 낯설고 불편하게 느껴졌지만 점차 익숙해지며 <Emphas text="반응형 화면을 쉽게 구현" />할 수 있다는 장점을 체감하게 되었고, 많은 개발자들이 선호하는 이유를 몸소 느낄 수 있었습니다.</Paragraph>,
+      <Paragraph>&nbsp;&nbsp;무엇보다 이번 프로젝트는 웹 개발에 그치지 않고 <Emphas text="‘어떻게 하면 나를 더 잘 표현할 수 있을까’" />에 대해 고민하는 시간이 되기도 했습니다. 개발 역량뿐만 아니라 개발자로서의 나를 <Emphas text="스스로 돌아보는 계기" />가 되었습니다.</Paragraph>
     ],
   }
 ];

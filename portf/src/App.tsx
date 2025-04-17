@@ -431,7 +431,7 @@ function App() {
                                 ))}
                               </div>
                             </div>
-                            <div className="font-empha text-[20px] md:text-[30px] md:mb-2">🗂️ 프로젝트 설명</div>
+                            <div className="font-empha text-[20px] xl:mt-6 md:text-[30px] md:mb-2">🗂️ 프로젝트 설명</div>
                             {project.youtubeLink && (
                               <>
                                 <div className="text-base text-[14px] -mb-3 md:text-[20px]">• 캡스톤 프로젝트(1) 데모영상</div>
