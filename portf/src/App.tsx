@@ -11,6 +11,7 @@ import Profile from "./images/profile.jpg";
 import Name from "./images/name.png";
 import Birth from "./images/cake.png";
 import Down from "./images/arrow-down.png";
+import BG from "./images/ppb.jpeg";
 import ReactFullpage from '@fullpage/react-fullpage';
 
 
@@ -75,10 +76,17 @@ function App() {
     };
   }, [openPopup, fullpageApi]);
 
-
+  function Emphas({ text }: { text: string }) {
+    return (
+      <span className="text-[#328E6E]">
+        {text}
+      </span>
+    );
+  }
 
   return (
-    <div className="bg-blue-100 w-full overflow-x-hidden scrollbar-hide overflow-auto min-h-screen flex flex-col">
+    <div className="bg-[#F9F2ED] w-full overflow-x-hidden scrollbar-hide overflow-auto min-h-screen flex flex-col"
+    >
       <ReactFullpage
         licenseKey=""
         scrollingSpeed={1000}
@@ -127,18 +135,24 @@ function App() {
             <ReactFullpage.Wrapper>
               {/* 첫번째 섹션 표지 */}
               <div className="section first-section">
-                <div className="w-full flex flex-col items-start mt-4 ml-4">
+                <div className="w-[100vw] flex flex-col items-center mt-40 md:mt-60 xl:mt-32">
                   {visibleMessages.slice(0).map((msg, i) => {
                     const absoluteIndex = i;
-                    const isLastTwo = absoluteIndex >= myname.length - 2; // 전체 기준 마지막 2개 확인
+                    const isSecondOrThird = absoluteIndex === 1 || absoluteIndex === 2;
+                    const isLast = absoluteIndex === 3;
                     return (
                       <motion.div
                         key={i}
-                        className={`font-title pl-4 pt-3 md:mb-1 md:mt-1 ${isLastTwo ? "text-[36px] md:text-[76px] text-purple-600" : "text-[28px] md:text-[58px] text-black"
-                          }`}
-                        initial={{ opacity: 0, x: -50, y:-20 }}
-                        animate={{ opacity: 1, x:0, y: 0 }}
-                        transition={{ duration: 0.8, ease: "easeInOut" }}
+                        className={`font-title leading-[12vh] md:leading-[14vh] xl:leading-[15.5vh] ${
+                          isLast
+                            ? "text-[25px] md:text-[42px] text-gray-500"
+                            : isSecondOrThird
+                            ? "text-[42px] md:text-[80px] text-[#328E6E]"
+                            : "text-[32px] md:text-[58px] text-black"
+                        }`}
+                        initial={{ opacity: 0, x: 0, y: -20 }}
+                        animate={{ opacity: 1, x: 0, y: 0 }}
+                        transition={{ duration: 0.8, ease: "easeIn" }}
                       >
                         <div>{msg}</div>
                       </motion.div>
@@ -227,21 +241,20 @@ function App() {
                         <div className="mb-2 flex flex-row md:mt-4">
                           <p className="text-lg md:text-3xl lg:text-4xl xl:text-[28px]">🧐</p>
                           <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[28px]">
-                            <span className="text-purple-600">세심</span>하고  <span className="text-purple-600">침착</span>한 성격을 바탕으로
-                            <span className="text-purple-600"> 작은<br className="md:hidden" /><span className="hidden md:inline">&nbsp;</span>디테일</span><br className="hidden md:inline xl:hidden" />까지 놓치지 않습니다.</p>
+                            <Emphas text="세심"/>하고 <Emphas text="침착"/>한 성격을 바탕으로 작은<br className="md:hidden" /> <Emphas text="디테일"/>까지 놓치지 않습니다.</p>
                         </div>
                         <div className="mb-2 flex flex-row md:flex-row lg:flex-row">
                           <p className="text-lg md:text-3xl lg:text-4xl xl:text-[28px]">🏃</p>
                           <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[28px]">
-                            새로운 것을 <span className="text-purple-600">배우는 속도</span>가 빠르며<span className="text-purple-600"> 도전<br className="md:hidden" /></span>하는 데 <br className="hidden md:inline" />두려움이 없습니다.</p>
+                            새로운 것을 <Emphas text="배우는 속도"/>가 빠르며<Emphas text=" 도전"/>하는 데 두려움이 없습니다.</p>
                         </div>
                         <div className="mb-2 flex flex-row md:flex-row lg:flex-row">
                           <p className="text-lg md:text-3xl lg:text-4xl xl:text-[28px]">👌</p>
-                          <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[28px]">어려운 문제도 <span className="text-purple-600">끈기</span>를 가지고 끝까지 <br className="md:hidden" />해결하려고 노력합니다.</p>
+                          <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[28px]">어려운 문제도 <Emphas text="끈기"/>를 가지고 끝까지 해결하려고 노력합니다.</p>
                         </div>
                         <div className="flex flex-row md:flex-row lg:flex-row">
                           <p className="text-lg md:text-3xl lg:text-4xl xl:text-[28px]">👂</p>
-                          <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-4 xl:text-[28px]">상대방의 말에 귀 기울이고 본인의 의견을<br className="md:hidden" /><span className="hidden md:inline">&nbsp;</span>명확<br className="hidden md:inline xl:hidden" />하게 전달할 수 있는 <span className="text-purple-600">커뮤니케이션 <br className="md:hidden" />능력</span>을 갖추고 <br className="hidden md:inline xl:hidden" />있습니다.</p>
+                          <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-4 xl:text-[28px]">상대방의 말에 귀 기울이고 본인의 의견을 명확하게 전달할 수 있는 <Emphas text="커뮤니케이션"/> 능력을 갖추고 있습니다.</p>
                         </div>
                       </div>
                     </motion.div>
@@ -250,7 +263,7 @@ function App() {
               </div>
               {/*세번째 섹션*/}
               <div className="section h-screen w-full flex flex-col justify-center items-center xl:flex-row">
-                <div className="absolute top-20 left-1/2 transform -translate-x-1/2 justify-start items-start xl:left-4 xl:translate-x-0 xl:top-48">
+                <div className="absolute top-[4vh] left-1/2 transform -translate-x-1/2 justify-start items-start xl:left-4 xl:translate-x-0 xl:top-40">
                   <motion.div
                     className="flex flex-col justify-start items-start w-full xl:h-96"
                     initial={XL ? { opacity: 0, y: -50 } : { opacity: 0, x: -50 }}
@@ -274,7 +287,7 @@ function App() {
                   </motion.div>
                 </div>
                 {showskill &&
-                  <div className="absolute top-72 left-1/2 transform -translate-x-1/2 justify-start items-start md:top-[34vh] xl:left-1/3 xl:translate-x-0 xl:top-48">
+                  <div className="absolute top-[26vh] left-1/2 transform -translate-x-1/2 justify-start items-start md:top-[27.5vh] xl:left-1/3 xl:translate-x-0 xl:top-40">
                     <motion.div
                       className="flex flex-col items-center w-full pb-6 font-empha text-xl md:text-3xl md:mb-6 xl:mb-8"
                       initial={XL ? { opacity: 0, y: 50 } : { opacity: 0, x: 50 }}
@@ -302,7 +315,7 @@ function App() {
                   </div>
                 }
                 {showEdu &&
-                  <div className="absolute bottom-14 left-1/2 transform -translate-x-1/2 justify-start items-start xl:left-2/3 xl:translate-x-0 xl:top-48">
+                  <div className="absolute bottom-[4vh] left-1/2 transform -translate-x-1/2 justify-start items-start xl:left-2/3 xl:translate-x-0 xl:top-40">
                     <motion.div
                       className="flex flex-col items-center w-full pb-6 font-empha text-xl md:text-3xl md:mb-6  xl:mb-8"
                       initial={XL ? { opacity: 0, y: -50 } : { opacity: 0, x: -50 }}
@@ -392,7 +405,7 @@ function App() {
                             title={project.title}
                             imgsrc={project?.imgsrc}
                           >
-                            <div className="flex flex-col mt-2 mb-3">
+                            <div className="flex flex-col mt-2 mb-3 ">
                               <p className="font-empha text-[20px] whitespace-nowrap mr-1 md:text-[30px]">🙌 소개</p>
                               <p className="text-[16px] break-words md:text-[24px]">{project.onePoint}</p>
                             </div>
@@ -402,15 +415,15 @@ function App() {
                                 href={project.githubLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-blue-500 underline text-[18px] break-all mr-4 md:text-[24px]"
+                                className="text-blue-500 underline text-[18px] break-all mr-4 md:text-[26px]"
                               >
                                 링크 보기
                               </a>
 
                             </div>
                             <div className="flex flex-col mt-2 mb-3">
-                              <p className="font-empha text-[20px] md:text-[30px]">🧩 프로젝트 개요</p>
-                              <div className="text-[16px] flex flex-col gap-[10px] md:text-[24px] md:gap-[14px]">
+                              <p className="font-empha text-[20px] md:text-[30px] md:mb-2">🧩 프로젝트 개요</p>
+                              <div className="text-[16px] flex flex-col gap-[10px] md:text-[24px] md:gap-[15px]">
                                 {project.overview.map((line, index) => (
                                   <div key={index} className="leading-7">
                                     {line}
@@ -418,10 +431,10 @@ function App() {
                                 ))}
                               </div>
                             </div>
-                            <div className="font-empha text-[20px] md:text-[30px]">🗂️ 프로젝트 설명</div>
+                            <div className="font-empha text-[20px] md:text-[30px] md:mb-2">🗂️ 프로젝트 설명</div>
                             {project.youtubeLink && (
                               <>
-                                <div className="text-base text-[14px] -mb-3">• 캡스톤 프로젝트(1) 데모영상</div>
+                                <div className="text-base text-[14px] -mb-3 md:text-[20px]">• 캡스톤 프로젝트(1) 데모영상</div>
                                 <div className="w-full my-4 aspect-video">
                                   {showYoutube ? (
                                     <iframe
@@ -451,7 +464,7 @@ function App() {
                             )}
                             {project.youtubeLink2 && (
                               <>
-                                <div className="text-base text-[14px] -mb-3">• 캡스톤 프로젝트(2) 데모영상</div>
+                                <div className="text-base text-[14px] -mb-3 md:text-[20px]">• 캡스톤 프로젝트(2) 데모영상</div>
                                 <div className="w-full my-4 aspect-video">
                                   {showYoutube2 ? (
                                     <iframe
@@ -481,16 +494,16 @@ function App() {
                             )}
                             {project.discription2 &&
                               project.discription2.map((line, index) => (
-                                <div key={index} className="text-[16px] leading-7">
+                                <div key={index} className="text-[16px] leading-7 md:leading-10">
                                   {line}
                                 </div>
                               ))}
                             {project.responsibility && (
                               <div>
                                 <div className="font-empha text-[20px] mt-5 md:text-[30px]">🙋‍♀️ 담당한 기능</div>
-                                <div className="flex flex-col gap-[10px]">
+                                <div className="flex flex-col gap-[10px] md:gap-[13px]">
                                   {project.responsibility.map((line, index) => (
-                                    <div key={index} className="text-[16px] leading-5">
+                                    <div key={index} className="text-[16px] leading-5 md:leading-8">
                                       {line}
                                     </div>
                                   ))}
@@ -499,9 +512,9 @@ function App() {
                             )}
                             <div className="font-empha text-[20px] mt-5 mb-2 md:text-[30px]">✍️ 느낀점</div>
                             {project.feedback &&
-                              <div className="flex flex-col gap-[12px]">
+                              <div className="flex flex-col gap-[12px] md:gap-[15px]">
                                 {project.feedback.map((line, index) => (
-                                  <div key={index} className="text-[16px] leading-6">
+                                  <div key={index} className="text-[16px] leading-6 md:leading-9">
                                     {line}
                                   </div>
                                 ))}

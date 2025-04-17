@@ -9,7 +9,7 @@ export function IntroAni(
     setVisibleMessages([myname[0]]);
     setTimeout(() => {
       setStartAdding(true);
-    }, 300);
+    }, 200);
   }, []);
 }
 
