@@ -39,7 +39,7 @@ const Projectpopup = ({ isOpen, onClose, children, title, imgsrc }: ProjectModal
             <Dialog.Panel className="w-full md:w-[90vw] xl:w-[70vw] h-[90vh] flex flex-col p-6 overflow-y-auto rounded-2xl bg-white shadow-xl justify-start items-center md:px-12">
             <button
                   type="button"
-                  className="pl-[76vw] md:pl-[74vw] xl:pl-[60vw]"
+                  className="absolute right-9 md:right-20 xl:right-64"
                   onClick={onClose}             
                 >
                     <img src={Close} className='w-4 h-4 md:w-7 md:h-7 '/>

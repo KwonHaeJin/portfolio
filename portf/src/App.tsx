@@ -143,13 +143,12 @@ function App() {
                     return (
                       <motion.div
                         key={i}
-                        className={`font-title leading-[12vh] md:leading-[14vh] xl:leading-[15.5vh] ${
-                          isLast
-                            ? "text-[25px] md:text-[42px] text-gray-500"
-                            : isSecondOrThird
+                        className={`font-title leading-[12vh] md:leading-[14vh] xl:leading-[15.5vh] ${isLast
+                          ? "text-[25px] md:text-[42px] text-gray-500"
+                          : isSecondOrThird
                             ? "text-[42px] md:text-[80px] text-[#328E6E]"
                             : "text-[32px] md:text-[58px] text-black"
-                        }`}
+                          }`}
                         initial={{ opacity: 0, x: 0, y: -20 }}
                         animate={{ opacity: 1, x: 0, y: 0 }}
                         transition={{ duration: 0.8, ease: "easeIn" }}
@@ -241,20 +240,20 @@ function App() {
                         <div className="mb-2 flex flex-row md:mt-4">
                           <p className="text-lg md:text-3xl lg:text-4xl xl:text-[28px]">🧐</p>
                           <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[28px]">
-                            <Emphas text="세심"/>하고 <Emphas text="침착"/>한 성격을 바탕으로 작은<br className="md:hidden" /> <Emphas text="디테일"/>까지 놓치지 않습니다.</p>
+                            <Emphas text="세심" />하고 <Emphas text="침착" />한 성격을 바탕으로 작은<br className="md:hidden" /> <Emphas text="디테일" />까지 놓치지 않습니다.</p>
                         </div>
                         <div className="mb-2 flex flex-row md:flex-row lg:flex-row">
                           <p className="text-lg md:text-3xl lg:text-4xl xl:text-[28px]">🏃</p>
                           <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[28px]">
-                            새로운 것을 <Emphas text="배우는 속도"/>가 빠르며<Emphas text=" 도전"/>하는 데 두려움이 없습니다.</p>
+                            새로운 것을 <Emphas text="배우는 속도" />가 빠르며<Emphas text=" 도전" />하는 데 두려움이 없습니다.</p>
                         </div>
                         <div className="mb-2 flex flex-row md:flex-row lg:flex-row">
                           <p className="text-lg md:text-3xl lg:text-4xl xl:text-[28px]">👌</p>
-                          <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[28px]">어려운 문제도 <Emphas text="끈기"/>를 가지고 끝까지 해결하려고 노력합니다.</p>
+                          <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[28px]">어려운 문제도 <Emphas text="끈기" />를 가지고 끝까지 해결하려고 노력합니다.</p>
                         </div>
                         <div className="flex flex-row md:flex-row lg:flex-row">
                           <p className="text-lg md:text-3xl lg:text-4xl xl:text-[28px]">👂</p>
-                          <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-4 xl:text-[28px]">상대방의 말에 귀 기울이고 본인의 의견을 명확하게 전달할 수 있는 <Emphas text="커뮤니케이션"/> 능력을 갖추고 있습니다.</p>
+                          <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-4 xl:text-[28px]">상대방의 말에 귀 기울이고 본인의 의견을 명확하게 전달할 수 있는 <Emphas text="커뮤니케이션" /> 능력을 갖추고 있습니다.</p>
                         </div>
                       </div>
                     </motion.div>
@@ -343,7 +342,7 @@ function App() {
               </div>
               {/*네번째 섹션*/}
               <div className="section h-screen w-full flex flex-col justify-center items-center">
-                <div className="absolute top-8 left-1/2 transform -translate-x-1/2 justify-start items-start md:top-12 xl:left-[24.2vw] xl:translate-x-0 ">
+                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 justify-start items-start md:top-12 xl:left-[24.2vw] xl:translate-x-0 ">
                   <motion.div
                     className="flex flex-col justify-start items-start w-full xl:h-96"
                     initial={{ opacity: 0, y: 0 }}
@@ -358,33 +357,39 @@ function App() {
                   </motion.div>
                 </div>
                 {showProject && (
-                  <div className="absolute top-32 md:top-60 xl:top-48 ">
+                  <div className="absolute top-14 md:top-60 xl:top-48 ">
                     <motion.div
                       initial={{ opacity: 0, y: 100 }}
                       animate={{ opacity: 1, y: 50 }}
                       transition={{ duration: 1, ease: "easeOut" }}
-                    > <div className="grid grid-cols-2 md:ml-10 xl:flex-row justify-between items-start gap-x-[2vw] gap-y-[14vw] md:gap-y-[8vw] w-[100vw] px-[2vw] xl:flex xl:flex-wrap xl:ml-0">
+                    > <div className="flex flex-col items-center gap-y-[6vw] px-[2vw] w-[100vw] 
+                    md:grid md:grid-cols-2 md:ml-10 md:gap-y-[8vw] md:gap-x-[2vw] 
+                    xl:flex xl:flex-row xl:flex-wrap xl:ml-0 xl:justify-between xl:items-start">
                         {projectData.map((project, index) => (
                           <div
                             key={index}
                             onClick={() => setOpenPopup(index)}
-                            className="cursor-pointer relative flex flex-col items-center justify-start pt-3 md:pt-4 bg-white rounded-lg w-[47vw] h-[30vh] md:w-[42vw] md:h-[27vh] xl:w-[22vw] xl:h-[42vh] hover:shadow-lg transition"
+                            className="cursor-pointer relative flex flex-col items-center justify-start pt-3 md:pt-4 bg-white rounded-lg 
+                     w-[90vw] h-[18vh] md:w-[42vw] md:h-[27vh] xl:w-[22vw] xl:h-[42vh] hover:shadow-lg transition"
                           >
-                            <div className="flex items-center justify-center text-base md:text-2xl xl:text-xl bg-orange-500 text-white font-empha w-[42vw] h-6 mb-2 md:w-[32vw] md:h-8 xl:w-52 xl:h-9 rounded-lg xl:mb-4">
+                            <div className="flex items-center justify-center text-base md:text-2xl xl:text-xl bg-orange-500 text-white font-empha 
+                          w-[85vw] h-6 mb-2 md:w-[32vw] md:h-8 xl:w-52 xl:h-9 rounded-lg xl:mb-4">
                               {project.title}
                             </div>
-                            <div className="flex flex-col items-center justify-center text-sm md:text-lg xl:text-base font-sans font-semibold p-2 rounded-lg bg-[#FFE9D0] w-[42vw] md:w-[34vw] xl:w-[20vw] mb-0 text-slate-600 xl:mb-4">
+                            <div className="hidden md:flex flex-col items-center justify-center text-sm md:text-lg xl:text-base font-sans font-semibold 
+                          p-2 rounded-lg bg-[#FFE9D0] w-[85vw] md:w-[34vw] xl:w-[20vw] mb-0 text-slate-600 xl:mb-4">
                               {project.stack.map((line, i) => (
                                 <span key={i}>{line}</span>
                               ))}
                             </div>
-                            <div className="flex flex-col items-start justify-center font-sans font-semibold p-2 w-[45vw] text-sm md:w-[36vw] md:text-base xl:text-base xl:w-[20vw]">
+                            <div className="flex flex-col items-start justify-center font-sans font-semibold p-2 text-sm md:text-base 
+                          w-[85vw] md:w-[36vw] xl:text-base xl:w-[20vw]">
                               {project.description.map((line, i) => (
                                 <span key={i}>{line}</span>
                               ))}
                             </div>
                             <motion.div
-                              className="absolute bottom-2 right-4 text-gray-500 text-xs font-empha"
+                              className="absolute bottom-2 right-4 text-gray-500 text-xs font-empha md:text-base"
                               initial={{ opacity: 0 }}
                               animate={{ opacity: 1 }}
                               transition={{
@@ -394,7 +399,8 @@ function App() {
                                 repeatType: "mirror"
                               }}
                             >
-                              Click me!</motion.div>
+                              Click me!
+                            </motion.div>
                           </div>
                         ))}
                         {projectData.map((project, index: number) => (
@@ -409,6 +415,20 @@ function App() {
                               <p className="font-empha text-[20px] whitespace-nowrap mr-1 md:text-[30px]">🙌 소개</p>
                               <p className="text-[16px] break-words md:text-[24px]">{project.onePoint}</p>
                             </div>
+                            <div className="flex flex-col mt-2 mb-3 ">
+                              <p className="font-empha text-[20px] whitespace-nowrap mr-1 md:text-[30px]">🛠️ 기술 스택</p>
+                              <div className="flex flex-wrap gap-2 text-[16px] md:text-[24px]">
+                                {project.detailStack.map((line, index) => (
+                                  <span
+                                    key={index}
+                                    className="bg-[#FFE9D0] text-slate-600 font-semibold px-3 py-[2px] rounded-lg shadow-sm"
+                                  >
+                                    {line}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+
                             <div className="flex flex-row mt-2 mb-3">
                               <p className="font-empha text-[20px] whitespace-nowrap mr-1 md:text-[30px]">🔗 Github: </p>
                               <a
@@ -434,7 +454,15 @@ function App() {
                             <div className="font-empha text-[20px] xl:mt-6 md:text-[30px] md:mb-2">🗂️ 프로젝트 설명</div>
                             {project.youtubeLink && (
                               <>
-                                <div className="text-base text-[14px] -mb-3 md:text-[20px]">• 캡스톤 프로젝트(1) 데모영상</div>
+                                <div className="text-base text-[14px] md:text-[20px]">• 캡스톤 프로젝트(1) 데모영상</div>
+                                <a
+                                  href={project.youtubeLink}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-blue-500 underline text-[14px] break-all md:text-[20px]"
+                                >
+                                  youtube.com/capstone1
+                                </a>
                                 <div className="w-full my-4 aspect-video">
                                   {showYoutube ? (
                                     <iframe
@@ -464,7 +492,15 @@ function App() {
                             )}
                             {project.youtubeLink2 && (
                               <>
-                                <div className="text-base text-[14px] -mb-3 md:text-[20px]">• 캡스톤 프로젝트(2) 데모영상</div>
+                                <div className="text-base text-[14px] md:text-[20px]">• 캡스톤 프로젝트(2) 데모영상</div>
+                                <a
+                                  href={project.youtubeLink2}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-blue-500 underline text-[14px] break-all md:text-[20px]"
+                                >
+                                  youtube.com/capstone2
+                                </a>
                                 <div className="w-full my-4 aspect-video">
                                   {showYoutube2 ? (
                                     <iframe
@@ -492,12 +528,16 @@ function App() {
                                 </div>
                               </>
                             )}
-                            {project.discription2 &&
-                              project.discription2.map((line, index) => (
-                                <div key={index} className="text-[16px] leading-7 md:leading-10">
-                                  {line}
-                                </div>
-                              ))}
+
+                            {project.discription2 && (
+                              <div className="flex flex-col gap-[10px] md:gap-[13px]">
+                                {project.discription2.map((line, index) => (
+                                  <div key={index} className="text-[16px] leading-5 md:leading-8">
+                                    {line}
+                                  </div>
+                                ))}
+                              </div>
+                            )}
                             {project.responsibility && (
                               <div>
                                 <div className="font-empha text-[20px] mt-5 md:text-[30px]">🙋‍♀️ 담당한 기능</div>
