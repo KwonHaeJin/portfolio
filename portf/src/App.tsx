@@ -178,7 +178,7 @@ function App() {
               </div>
               {/* 두번째 섹션 프로필 */}
               <div className="section h-screen w-full flex flex-col justify-center items-center xl:flex-row xl:justify-between">
-                <div className="absolute top-20 left-1/2 transform -translate-x-1/2 justify-start items-start md:top-12 xl:top-24 xl:left-4 xl:translate-x-0 ">
+                <div className="absolute top-[7vh] tall-mobile:top-[10vh] left-1/2 transform -translate-x-1/2 justify-start items-start md:top-12 xl:top-24 xl:left-4 xl:translate-x-0 ">
                   <motion.div
                     className="flex flex-col justify-start items-start w-full xl:h-96"
                     initial={{ opacity: 0, x: -50 }}
@@ -226,7 +226,7 @@ function App() {
                   </motion.div>
                 </div>
                 {showadvantage &&
-                  <div className="absolute bottom-20 flex-col justify-start items-start md:top-[50vh] xl:left-[51.5vw] xl:top-[10vh]">
+                  <div className="absolute bottom-[8vh] tall-mobile:bottom-[10vh] flex-col justify-start items-start md:top-[50vh] xl:left-[51.5vw] xl:top-[10vh]">
                     <motion.div
                       initial={{ opacity: 0, x: 50 }}
                       animate={animateProfile ? { opacity: 1, x: 0 } : {}}
@@ -238,22 +238,22 @@ function App() {
                       </p>
                       <div className="bg-white rounded-lg w-[83vw] flex flex-col items-start justify-start md:p-2 xl:w-[47vw]">
                         <div className="mb-2 flex flex-row md:mt-4">
-                          <p className="text-lg md:text-3xl lg:text-4xl xl:text-[28px]">🧐</p>
-                          <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[28px]">
-                            <Emphas text="세심" />하고 <Emphas text="침착" />한 성격을 바탕으로 작은<br className="md:hidden" /> <Emphas text="디테일" />까지 놓치지 않습니다.</p>
+                          <p className="text-[16px] tall-mobile:text-lg md:text-3xl lg:text-4xl xl:text-[28px]">🧐</p>
+                          <p className="font-empha text-[16px] tall-mobile:text-lg  ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[28px]">
+                            <Emphas text="세심" />하고 <Emphas text="침착" />한 성격을 바탕으로 작은 <Emphas text="디테일" />까지 놓치지 않습니다.</p>
                         </div>
                         <div className="mb-2 flex flex-row md:flex-row lg:flex-row">
-                          <p className="text-lg md:text-3xl lg:text-4xl xl:text-[28px]">🏃</p>
-                          <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[28px]">
+                          <p className="text-[16px] tall-mobile:text-lg  md:text-3xl lg:text-4xl xl:text-[28px]">🏃</p>
+                          <p className="font-empha text-[16px] tall-mobile:text-lg  ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[28px]">
                             새로운 것을 <Emphas text="배우는 속도" />가 빠르며<Emphas text=" 도전" />하는 데 두려움이 없습니다.</p>
                         </div>
                         <div className="mb-2 flex flex-row md:flex-row lg:flex-row">
-                          <p className="text-lg md:text-3xl lg:text-4xl xl:text-[28px]">👌</p>
-                          <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[28px]">어려운 문제도 <Emphas text="끈기" />를 가지고 끝까지 해결하려고 노력합니다.</p>
+                          <p className="text-[16px] tall-mobile:text-lg  md:text-3xl lg:text-4xl xl:text-[28px]">👌</p>
+                          <p className="font-empha text-[16px] tall-mobile:text-lg  ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[28px]">어려운 문제도 <Emphas text="끈기" />를 가지고 끝까지 해결하려고 노력합니다.</p>
                         </div>
                         <div className="flex flex-row md:flex-row lg:flex-row">
-                          <p className="text-lg md:text-3xl lg:text-4xl xl:text-[28px]">👂</p>
-                          <p className="font-empha text-lg ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-4 xl:text-[28px]">상대방의 말에 귀 기울이고 본인의 의견을 명확하게 전달할 수 있는 <Emphas text="커뮤니케이션" /> 능력을 갖추고 있습니다.</p>
+                          <p className="text-[16px] tall-mobile:text-lg  md:text-3xl lg:text-4xl xl:text-[28px]">👂</p>
+                          <p className="font-empha text-[16px] tall-mobile:text-lg  ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-4 xl:text-[28px]">상대방의 말에 귀 기울이고 본인의 의견을 명확하게 전달할 수 있는 <Emphas text="커뮤니케이션" /> 능력을 갖추고 있습니다.</p>
                         </div>
                       </div>
                     </motion.div>
@@ -262,7 +262,7 @@ function App() {
               </div>
               {/*세번째 섹션*/}
               <div className="section h-screen w-full flex flex-col justify-center items-center xl:flex-row">
-                <div className="absolute top-[4vh] left-1/2 transform -translate-x-1/2 justify-start items-start xl:left-4 xl:translate-x-0 xl:top-40">
+                <div className="absolute top-[3vh] tall-mobile:top-[4vh] lg:top-[6vh] left-1/2 transform -translate-x-1/2 justify-start items-start xl:left-4 xl:translate-x-0 xl:top-40">
                   <motion.div
                     className="flex flex-col justify-start items-start w-full xl:h-96"
                     initial={XL ? { opacity: 0, y: -50 } : { opacity: 0, x: -50 }}
@@ -270,15 +270,15 @@ function App() {
                     transition={{ duration: 1, ease: "easeOut" }}
                   >
                     <div className="flex-col flex justify-start items-start">
-                      <div className="flex flex-row items-center pb-6 md:mb-4 lg:mb-24 xl:mb-16">
+                      <div className="flex flex-row items-center pb-3 tall-mobile:pb-6 md:mb-4 lg:mb-8 xl:mb-16">
                         <p className="text-xl font-subtitle md:text-4xl">Certificate</p>
-                        <span className="ml-2 w-56 h-[1px] bg-black md:w-[56vw] xl:w-[16vw] xl:h-[2px]"></span>
+                        <span className="ml-2 w-[54vw] h-[1px] bg-black md:w-[56vw] xl:w-[16vw] xl:h-[2px]"></span>
                       </div>
-                      <div className="bg-white rounded-lg w-[82vw] pl-4 pt-2 xl:pt-6 xl:w-[30vw]">
+                      <div className="bg-white rounded-lg w-[82vw] pl-4 pt-2 md:pt-4 xl:pt-6 xl:w-[30vw]">
                         {certificates.map((cert, index) => (
                           <div key={index} className="flex flex-row md:flex-row lg:flex-row">
-                            <p className="text-lg font-empha -mb-1 md:text-3xl">{cert.name}</p>
-                            <p className="text-lg ml-2 mb-2 md:text-3xl md:mb-4 xl:mb-6">{cert.date}</p>
+                            <p className="text-[15px] tall-mobile:text-lg font-empha -mb-1 md:text-3xl">{cert.name}</p>
+                            <p className="text-[15px] tall-mobile:text-lg ml-2 mb-2 md:text-3xl md:mb-4 xl:mb-6">{cert.date}</p>
                           </div>
                         ))}
                       </div>
@@ -286,23 +286,23 @@ function App() {
                   </motion.div>
                 </div>
                 {showskill &&
-                  <div className="absolute top-[26vh] left-1/2 transform -translate-x-1/2 justify-start items-start md:top-[27.5vh] xl:left-1/3 xl:translate-x-0 xl:top-40">
+                  <div className="absolute top-[25vh] tall-mobile:top-[27vh] left-1/2 transform -translate-x-1/2 justify-start items-start md:top-[26vh] lg:top-[28vh] xl:left-1/3 xl:translate-x-0 xl:top-40">
                     <motion.div
                       className="flex flex-col items-center w-full pb-6 font-empha text-xl md:text-3xl md:mb-6 xl:mb-8"
                       initial={XL ? { opacity: 0, y: 50 } : { opacity: 0, x: 50 }}
                       animate={showcertifi ? { opacity: 1, x: 0, y: 0 } : {}}
                       transition={{ duration: 1, ease: "easeOut" }}
                     >
-                      <div className="flex flex-row items-center pb-5 md:mb-4 lg:mb-24 xl:mb-16">
+                      <div className="flex flex-row items-center pb-3 tall-mobile:pb-5 md:mb-4 lg:mb-8 xl:mb-16">
                         <p className="text-xl font-subtitle md:text-4xl">Skills</p>
-                        <span className="ml-2 w-[68vw] h-[1px] bg-black xl:h-[2px] xl:w-[24vw]"></span>
+                        <span className="ml-2 w-[68vw] h-[1px] bg-black lg:w-[72vw] xl:h-[2px] xl:w-[24vw]"></span>
                       </div>
                       {skills.map((group, index) => (
-                        <div key={index} className="flex flex-wrap gap-2 items-start justify-start w-[82vw] mt-2 xl:w-[31vw]">
+                        <div key={index} className="flex flex-wrap gap-2 md:gap-4 items-start justify-start w-[82vw] mt-2 xl:w-[31vw]">
                           {group.skills.map((skill, idx) => (
                             <p
                               key={idx}
-                              className="rounded-lg text-gray-600 pl-2 pr-2"
+                              className="rounded-lg text-gray-600 text-[16px] tall-mobile:text-[18px] md:text-[35px] md:py-2 px-2"
                               style={{ backgroundColor: group.category }}
                             >
                               {skill}
@@ -314,7 +314,7 @@ function App() {
                   </div>
                 }
                 {showEdu &&
-                  <div className="absolute bottom-[4vh] left-1/2 transform -translate-x-1/2 justify-start items-start xl:left-2/3 xl:translate-x-0 xl:top-40">
+                  <div className="absolute bottom-[1vh] tall-mobile:bottom-[4vh] lg:bottom-[4vh] left-1/2 transform -translate-x-1/2 justify-start items-start xl:left-2/3 xl:translate-x-0 xl:top-40">
                     <motion.div
                       className="flex flex-col items-center w-full pb-6 font-empha text-xl md:text-3xl md:mb-6  xl:mb-8"
                       initial={XL ? { opacity: 0, y: -50 } : { opacity: 0, x: -50 }}
@@ -322,16 +322,16 @@ function App() {
                       transition={{ duration: 1, ease: "easeOut" }}
                     >
                       <div className="flex-col flex justify-start items-start">
-                        <div className="flex flex-row items-center pb-6 md:mb-4 lg:mb-24 xl:mb-16">
+                        <div className="flex flex-row items-center pb-3 tall-mobile:pb-6 md:mb-4 lg:mb-8 xl:mb-16">
                           <p className="text-xl font-subtitle md:text-4xl ">Education</p>
-                          <span className="ml-2 w-[56vw] h-[1px] bg-black md:w-[58vw] xl:h-[2px] xl:w-[18vw]"></span>
+                          <span className="ml-2 w-[56vw] h-[1px] bg-black md:w-[58vw] lg:w-[62vw] xl:h-[2px] xl:w-[18vw]"></span>
                         </div>
-                        <div className="bg-white rounded-lg w-[82vw] pl-4 pt-4 xl:w-[31vw]">
+                        <div className="bg-white rounded-lg w-[82vw] pl-4 pt-2 md:pt-4 md:pb-2 xl:w-[31vw]">
                           {education.map((edu, index) => (
-                            <div key={index} className="mb-4">
-                              <p className="text-lg font-sans md:text-3xl md:mb-2 xl:mb-2">{edu.period}</p>
-                              <p className="text-lg font-empha md:text-3xl">{edu.school}</p>
-                              {edu.grade && <p className="text-lg font-empha md:text-3xl">{edu.grade}</p>}
+                            <div key={index} className="mb-2 target:mb-4 md:mb-4">
+                              <p className="text-[15px] tall-mobile:text-lg font-sans md:text-3xl md:mb-2 xl:mb-2">{edu.period}</p>
+                              <p className="text-[15px] tall-mobile:text-lg font-empha md:text-3xl">{edu.school}</p>
+                              {edu.grade && <p className="text-[15px] tall-mobile:text-lg font-empha md:text-3xl">{edu.grade}</p>}
                             </div>
                           ))}
                         </div>
@@ -429,15 +429,15 @@ function App() {
                               </div>
                             </div>
 
-                            <div className="flex flex-row mt-2 mb-3">
-                              <p className="font-empha text-[20px] whitespace-nowrap mr-1 md:text-[30px]">🔗 Github: </p>
+                            <div className="flex flex-col mt-2 mb-3">
+                              <p className="font-empha text-[20px] whitespace-nowrap mr-1 md:text-[30px]">🔗 Github </p>
                               <a
                                 href={project.githubLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-blue-500 underline text-[18px] break-all mr-4 md:text-[26px]"
                               >
-                                링크 보기
+                                {project.githubLink}
                               </a>
 
                             </div>

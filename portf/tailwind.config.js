@@ -9,7 +9,9 @@ module.exports = {
         'title' : 'title',
         'subtitle' : 'subtitle'
       },
-      
+      screens: {
+        'tall-mobile': { raw:  '(min-height: 896px) and (max-width: 414px)' }
+      }
     },
   },
   plugins: [

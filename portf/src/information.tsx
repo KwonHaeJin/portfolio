@@ -215,10 +215,10 @@ export const projectData = [
       <Detail>마이페이지 수정 기능</Detail>,
       <Detail>로그인 및 회원 가입</Detail>,
       <DesTitle text="실제 구현 화면" />,
-      <div className="xl:grid xl:grid-cols-2">
-        <img src={EWOOTZ4} className="xl:object-cover xl:h-[322px]" />
+      <div className="md:grid md:grid-cols-2">
+        <img src={EWOOTZ4} className="lg:object-cover xl:h-[322px] lg:h-[294px] md:h-[228px]" />
         <img src={EWOOTZ3} className="xl:object-cover" />
-        <img src={EWOOTZ2} className="md:object-cover xl:h-[322px] md:h-[402px]" />
+        <img src={EWOOTZ2} className="md:object-cover xl:h-[322px] lg:h-[294px] md:h-[228px]" />
         <img src={EWOOTZ1} className="xl:object-cover" />
       </div>
     ], responsibility: [
@@ -338,6 +338,7 @@ export const projectData = [
     feedback: [
       <Paragraph>개인 포트폴리오를 만들며 처음으로 기획부터 구현까지 <Emphas text="모든 과정을 혼자서 책임" />지는 경험을 했습니다. 팀 프로젝트에만 익숙했던 만큼, 누군가의 도움 없이 문제를 해결해야 한다는 점이 처음엔 막막하게 느껴졌지만, 그 과정을 통해 <Emphas text="스스로 해결책을 찾아가는 힘" />과 <Emphas text="자립심" />을 기를 수 있었습니다.</Paragraph>,
       <Paragraph>또한, 처음 접하는 <Emphas text="TailwindCSS" />는 초반에는 낯설고 불편하게 느껴졌지만 점차 익숙해지며 <Emphas text="반응형 화면을 쉽게 구현" />할 수 있다는 장점을 체감하게 되었고, 많은 개발자들이 선호하는 이유를 몸소 느낄 수 있었습니다.</Paragraph>,
+      <Paragraph>개발을 진행하며 <Emphas text="재사용 가능한 컴포넌트"/>를 만드는 것이 중요하다는 것을 느낄 수 있었습니다. <Emphas text="반복되는 UI 요소들을 구조화"/>하며 <Emphas text="코드의 일관성과 유지보수성"/>이 얼마나 향상되는지를 직접 경험할 수 있었습니다.</Paragraph>,
       <Paragraph>무엇보다 이번 프로젝트는 웹 개발에 그치지 않고 <Emphas text="‘어떻게 하면 나를 더 잘 표현할 수 있을까’" />에 대해 고민하는 시간이 되기도 했습니다. 개발 역량뿐만 아니라 개발자로서의 나를 <Emphas text="스스로 돌아보는 계기" />가 되었습니다.</Paragraph>
     ],
   }
