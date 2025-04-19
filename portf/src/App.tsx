@@ -25,6 +25,11 @@ function App() {
   const [showYoutube, setShowYoutube] = useState(false);
   const [showYoutube2, setShowYoutube2] = useState(false);
   const XL = useMediaQuery('(min-width: 1280px)');
+  const [mounted, setMounted] = useState(false);
+  
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   IntroAni(myname, setVisibleMessages, setStartAdding);
   IntroMessage(myname, startAdding, index, setVisibleMessages, setIndex);
@@ -49,8 +54,6 @@ function App() {
   const intro = useSectionInView();
   const profile = useSectionInView();
   const cert = useSectionInView();
-  const skillsSec = useSectionInView();
-  const edu = useSectionInView();
   const projects = useSectionInView();
 
   return (
@@ -97,10 +100,10 @@ function App() {
           initial={{ opacity: 0, x: -50 }}
           animate={profile.inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
           transition={{ duration: 1 }}
-          className="flex flex-col xl:w-[40vw] items-center xl:items-start">
+          className="flex flex-col xl:w-[40vw] items-start">
           <div className="flex flex-row items-end">
-            <img src={Profile} className="w-[30vw] h-[18vh] rounded-lg mr-4 mb-5 md:w-[22vw] md:h-[20vh] lg:w-[24vw] lg:h-[24vh] xl:h-[30vh] xl:w-[12vw] xl:mb-11"></img>
-            <div className="w-40 pl-2 h-15 xl:h-24 flex flex-col mb-4 md:mb-5 xl:mb-10 justify-end">
+            <img src={Profile} className="w-[135px] h-[180px] rounded-lg mr-4 mb-5 md:w-[210px] md:h-[280px] lg:w-[270px] lg:h-[360px] xl:h-[240px] xl:w-[180px] xl:mb-11"></img>
+            <div className="w-auto pl-2 h-15 xl:h-24 flex flex-col mb-4 md:mb-5 xl:mb-10 justify-end">
               <div className="flex flex-row items-center mb-3">
                 <img src={Name} className="w-5 h-5 md:w-8 md:h-8 xl:w-8 xl:h-8"></img>
                 <span className="font-empha text-base leading-none md:text-2xl md:pt-2 pl-2 xl:pl-1">권해진</span>
@@ -144,13 +147,11 @@ function App() {
           animate={profile.inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
           transition={{ duration: 1 }}
           className="flex flex-col xl:w-[46vw] items-center xl:items-start">
-
-         
           <p className="flex flex-row items-center justify-start w-full pb-6 font-subtitle text-xl md:text-4xl md:mb-4 lg:text-4xl xl:mb-8 xl:text-[36px]">
             Advantage
             <span className="ml-2 w-[53vw] h-[1px] bg-black md:w-[59vw] lg:w-[62vw] xl:w-[40vw] xl:h-[2px]"></span>
           </p>
-          <div className="bg-white rounded-lg w-[83vw] flex flex-col items-start justify-start md:p-2 xl:w-[46vw]">
+          <div className="bg-white rounded-lg w-[83vw] flex flex-col items-start justify-start px-1 py-2 md:p-2 xl:w-[46vw]">
             <div className="mb-2 flex flex-row md:mt-4">
               <p className="text-[16px] md:text-3xl lg:text-4xl xl:text-[28px]">🧐</p>
               <p className="font-empha text-[16px] ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[28px]">
@@ -174,19 +175,27 @@ function App() {
       </section>
       <section
         ref={cert.ref}
-        className="min-h-screen flex flex-col items-center justify-center gap-10 xl:mt-[35vh] xl:flex-row xl:px-4 xl:gap-10 xl:items-start">
+        className="min-h-screen flex flex-col items-center justify-center gap-10 mt-[20vh] xl:mt-[35vh] xl:flex-row xl:px-4 xl:gap-10 xl:items-start">
         {/* 자격증 */}
         <motion.div
-         initial={XL ? { opacity: 0, y: 50 } : { opacity: 0, x: 50 }}
-         animate={
-           cert.inView
-             ? XL
-               ? { opacity: 1, y: 0 }
-               : { opacity: 1, x: 0 }
-             : XL
-               ? { opacity: 0, y: 50 }
-               : { opacity: 0, x: 50 }
-         }
+         initial={
+          !mounted
+            ? { opacity: 0 } // 초기 렌더에서는 애니메이션 방향 없이 중립
+            : XL
+              ? { opacity: 0, y: 50 }
+              : { opacity: 0, x: 50 }
+        }
+        animate={
+          !mounted
+            ? { opacity: 1 }
+            : cert.inView
+              ? XL
+                ? { opacity: 1, y: 0 }
+                : { opacity: 1, x: 0 }
+              : XL
+                ? { opacity: 0, y: 50 }
+                : { opacity: 0, x: 50 }
+        }
           transition={{ duration: 1 }}
           className="xl:w-1/3">
           <div className="flex-col flex justify-start items-start">
@@ -207,15 +216,23 @@ function App() {
 
         {/* 스킬 */}
         <motion.div
-          initial={XL ? { opacity: 0, y: 50 } : { opacity: 0, x: -50 }}
-          animate={
-            cert.inView
-              ? XL
-                ? { opacity: 1, y: 0 }
-                : { opacity: 1, x: 0 }
+           initial={
+            !mounted
+              ? { opacity: 0 } // 초기 렌더에서는 애니메이션 방향 없이 중립
               : XL
-                ? { opacity: 0, y: 50 }
+                ? { opacity: 0, y: -50 }
                 : { opacity: 0, x: -50 }
+          }
+          animate={
+            !mounted
+              ? { opacity: 1 }
+              : cert.inView
+                ? XL
+                  ? { opacity: 1, y: 0 }
+                  : { opacity: 1, x: 0 }
+                : XL
+                  ? { opacity: 0, y: -50 }
+                  : { opacity: 0, x: -50 }
           }
           transition={{ duration: 1 }}
           className="xl:w-1/3">
@@ -240,15 +257,23 @@ function App() {
 
         {/* 학력 */}
         <motion.div
-          initial={XL ? { opacity: 0, y: 50 } : { opacity: 0, x: 50 }}
-          animate={
-            cert.inView
-              ? XL
-                ? { opacity: 1, y: 0 }
-                : { opacity: 1, x: 0 }
+          initial={
+            !mounted
+              ? { opacity: 0 } // 초기 렌더에서는 애니메이션 방향 없이 중립
               : XL
                 ? { opacity: 0, y: 50 }
                 : { opacity: 0, x: 50 }
+          }
+          animate={
+            !mounted
+              ? { opacity: 1 }
+              : cert.inView
+                ? XL
+                  ? { opacity: 1, y: 0 }
+                  : { opacity: 1, x: 0 }
+                : XL
+                  ? { opacity: 0, y: 50 }
+                  : { opacity: 0, x: 50 }
           }
           transition={{ duration: 1 }}
           className="xl:w-1/3">
@@ -271,13 +296,13 @@ function App() {
       </section>
 
       {/* 프로젝트 */}
-      <section ref={projects.ref} className="min-h-screen flex flex-col items-center justify-center px-4">
+      <section ref={projects.ref} className="min-h-screen flex flex-col mt-[20vh] xl:mt-[35vh] items-center justify-center px-4">
         <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={projects.inView ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
           transition={{ duration: 1, ease: 'easeOut' }}
         >
-          <div className="flex flex-row items-center justify-center pb-6 xl:mb-16">
+          <div className="flex flex-row items-center justify-center pb-6 md:mb-20 xl:mb-16">
             <span className="mr-2 w-[34vw] h-[1px] bg-black xl:h-[2px] xl:w-[35vw]"></span>
             <p className="text-xl font-subtitle md:text-4xl">Projects</p>
             <span className="ml-2 w-[34vw] h-[1px] bg-black xl:h-[2px] xl:w-[35vw]"></span>
@@ -298,12 +323,12 @@ function App() {
                 className="cursor-pointer relative flex flex-col items-center justify-start pt-3 md:pt-4 bg-white rounded-lg 
             w-[90vw] h-[18vh] md:w-[42vw] md:h-[27vh] xl:w-[22vw] xl:h-[42vh] hover:shadow-lg transition"
               >
-                <div className="flex items-center justify-center text-base md:text-2xl xl:text-xl bg-orange-500 text-white font-empha 
-            w-[85vw] h-6 mb-2 md:w-[32vw] md:h-8 xl:w-52 xl:h-9 rounded-lg xl:mb-4">
+                <div className="flex items-center justify-center text-base md:text-2xl lg:text-3xl xl:text-xl bg-orange-500 text-white font-empha 
+            w-[85vw] h-6 mb-2 md:w-[32vw] md:h-8 lg:h-10 xl:w-52 xl:h-9 rounded-lg xl:mb-4">
                   {project.title}
                 </div>
 
-                <div className="hidden md:flex flex-col items-center justify-center text-sm md:text-lg xl:text-base font-sans font-semibold 
+                <div className="hidden md:flex flex-col items-center justify-center text-sm md:text-lg lg:text-xl xl:text-base font-sans font-semibold 
             p-2 rounded-lg bg-[#FFE9D0] w-[85vw] md:w-[34vw] xl:w-[20vw] mb-0 text-slate-600 xl:mb-4">
                   {project.stack.map((line, i) => (
                     <span key={i}>{line}</span>
