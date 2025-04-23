@@ -102,7 +102,7 @@ function App() {
           transition={{ duration: 1 }}
           className="flex flex-col xl:w-[40vw] items-start">
           <div className="flex flex-row items-end">
-            <img src={Profile} className="w-[135px] h-[180px] rounded-lg mr-4 mb-5 md:w-[210px] md:h-[280px] lg:w-[270px] lg:h-[360px] xl:h-[240px] xl:w-[180px] xl:mb-11"></img>
+            <img src={Profile} className="w-[135px] h-[180px] rounded-lg mr-4 mb-5 md:w-[210px] md:h-[280px] lg:w-[270px] lg:h-[360px] xl:h-[200px] xl:w-[150px] xl:mb-11"></img>
             <div className="w-auto pl-2 h-15 xl:h-24 flex flex-col mb-4 md:mb-5 xl:mb-10 justify-end">
               <div className="flex flex-row items-center mb-3">
                 <img src={Name} className="w-5 h-5 md:w-8 md:h-8 xl:w-8 xl:h-8"></img>
@@ -122,18 +122,18 @@ function App() {
             <div className="bg-white rounded-lg w-[82vw] p-2 md:p-4 xl:w-[49vw]">
               {contactInfo.map((item, index) => (
                 <div key={index} className="flex flex-row xl:justify-between xl:mx-5">
-                  <p className="text-lg font-empha -mb-1 md:text-3xl md:mr-4">{item.label}</p>
+                  <p className="text-lg font-empha -mb-1 md:text-2xl md:mr-4">{item.label}</p>
                   {item.isLink ? (
                     <a
                       href={item.value}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="underline ml-2 text-lg md:text-3xl"
+                      className="underline ml-2 text-lg md:text-2xl"
                     >
                       {item.value.replace("https://", "")}
                     </a>
                   ) : (
-                    <p className="text-lg ml-2 mb-1 md:text-3xl md:mb-6 xl:mb-8">{item.value}</p>
+                    <p className="text-lg ml-2 mb-1 md:text-2xl md:mb-6 xl:mb-8">{item.value}</p>
                   )}
                 </div>
               ))}
@@ -147,28 +147,28 @@ function App() {
           animate={profile.inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
           transition={{ duration: 1 }}
           className="flex flex-col xl:w-[46vw] items-center xl:items-start">
-          <p className="flex flex-row items-center justify-start w-full pb-6 font-subtitle text-xl md:text-4xl md:mb-4 lg:text-4xl xl:mb-8 xl:text-[36px]">
+          <p className="flex flex-row items-center justify-start w-full pb-6 font-subtitle text-xl md:text-4xl md:mb-4 lg:text-4xl xl:mb-20 xl:text-[36px]">
             Advantage
             <span className="ml-2 w-[53vw] h-[1px] bg-black md:w-[59vw] lg:w-[62vw] xl:w-[40vw] xl:h-[2px]"></span>
           </p>
           <div className="bg-white rounded-lg w-[83vw] flex flex-col items-start justify-start px-1 py-2 md:p-2 xl:w-[46vw]">
             <div className="mb-2 flex flex-row md:mt-4">
-              <p className="text-[16px] md:text-3xl lg:text-4xl xl:text-[28px]">🧐</p>
-              <p className="font-empha text-[16px] ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[28px]">
+              <p className="text-[16px] md:text-3xl lg:text-4xl xl:text-[20px]">🧐</p>
+              <p className="font-empha text-[16px] ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[20px]">
                 <Emphas text="세심" />하고 <Emphas text="침착" />한 성격을 바탕으로 작은 <Emphas text="디테일" />까지 놓치지 않습니다.</p>
             </div>
             <div className="mb-2 flex flex-row md:flex-row lg:flex-row">
-              <p className="text-[16px] md:text-3xl lg:text-4xl xl:text-[28px]">🏃</p>
-              <p className="font-empha text-[16px] ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[28px]">
+              <p className="text-[16px] md:text-3xl lg:text-4xl xl:text-[20px]">🏃</p>
+              <p className="font-empha text-[16px] ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[20px]">
                 새로운 것을 <Emphas text="배우는 속도" />가 빠르며<Emphas text=" 도전" />하는 데 두려움이 없습니다.</p>
             </div>
             <div className="mb-2 flex flex-row md:flex-row lg:flex-row">
-              <p className="text-[16px] md:text-3xl lg:text-4xl xl:text-[28px]">👌</p>
-              <p className="font-empha text-[16px] ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[28px]">어려운 문제도 <Emphas text="끈기" />를 가지고 끝까지 해결하려고 노력합니다.</p>
+              <p className="text-[16px] md:text-3xl lg:text-4xl xl:text-[20px]">👌</p>
+              <p className="font-empha text-[16px] ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[20px]">어려운 문제도 <Emphas text="끈기" />를 가지고 끝까지 해결하려고 노력합니다.</p>
             </div>
             <div className="flex flex-row md:flex-row lg:flex-row">
-              <p className="text-[16px] md:text-3xl lg:text-4xl xl:text-[28px]">👂</p>
-              <p className="font-empha text-[16px] ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-4 xl:text-[28px]">상대방의 말에 귀 기울이고 본인의 의견을 명확하게 전달할 수 있는 <Emphas text="커뮤니케이션" /> 능력을 갖추고 있습니다.</p>
+              <p className="text-[16px] md:text-3xl lg:text-4xl xl:text-[20px]">👂</p>
+              <p className="font-empha text-[16px] ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-4 xl:text-[20px]">상대방의 말에 귀 기울이고 본인의 의견을 명확하게 전달할 수 있는 <Emphas text="커뮤니케이션" /> 능력을 갖추고 있습니다.</p>
             </div>
           </div>
         </motion.div>
