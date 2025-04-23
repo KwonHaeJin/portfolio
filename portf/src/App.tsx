@@ -26,7 +26,7 @@ function App() {
   const [showYoutube2, setShowYoutube2] = useState(false);
   const XL = useMediaQuery('(min-width: 1280px)');
   const [mounted, setMounted] = useState(false);
-  
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -178,24 +178,24 @@ function App() {
         className="min-h-screen flex flex-col items-center justify-center gap-10 mt-[20vh] xl:mt-[35vh] xl:flex-row xl:px-4 xl:gap-10 xl:items-start">
         {/* 자격증 */}
         <motion.div
-         initial={
-          !mounted
-            ? { opacity: 0 } // 초기 렌더에서는 애니메이션 방향 없이 중립
-            : XL
-              ? { opacity: 0, y: 50 }
-              : { opacity: 0, x: 50 }
-        }
-        animate={
-          !mounted
-            ? { opacity: 1 }
-            : cert.inView
-              ? XL
-                ? { opacity: 1, y: 0 }
-                : { opacity: 1, x: 0 }
+          initial={
+            !mounted
+              ? { opacity: 0 } // 초기 렌더에서는 애니메이션 방향 없이 중립
               : XL
                 ? { opacity: 0, y: 50 }
                 : { opacity: 0, x: 50 }
-        }
+          }
+          animate={
+            !mounted
+              ? { opacity: 1 }
+              : cert.inView
+                ? XL
+                  ? { opacity: 1, y: 0 }
+                  : { opacity: 1, x: 0 }
+                : XL
+                  ? { opacity: 0, y: 50 }
+                  : { opacity: 0, x: 50 }
+          }
           transition={{ duration: 1 }}
           className="xl:w-1/3">
           <div className="flex-col flex justify-start items-start">
@@ -216,7 +216,7 @@ function App() {
 
         {/* 스킬 */}
         <motion.div
-           initial={
+          initial={
             !mounted
               ? { opacity: 0 } // 초기 렌더에서는 애니메이션 방향 없이 중립
               : XL
@@ -321,7 +321,8 @@ function App() {
                 key={index}
                 onClick={() => setOpenPopup(index)}
                 className="cursor-pointer relative flex flex-col items-center justify-start pt-3 md:pt-4 bg-white rounded-lg 
-            w-[90vw] h-[18vh] md:w-[42vw] md:h-[27vh] xl:w-[22vw] xl:h-[42vh] hover:shadow-lg transition"
+                w-[90vw] min-h-[27vh] md:w-[42vw] md:min-h-[32vh] xl:w-[22vw] xl:min-h-[42vh] hover:shadow-lg transition"
+
               >
                 <div className="flex items-center justify-center text-base md:text-2xl lg:text-3xl xl:text-xl bg-orange-500 text-white font-empha 
             w-[85vw] h-6 mb-2 md:w-[32vw] md:h-8 lg:h-10 xl:w-52 xl:h-9 rounded-lg xl:mb-4">
@@ -520,8 +521,13 @@ function App() {
           )}
         </Projectpopup>
       ))}
+      <footer className="w-full bg-[#F9F2ED] font-subtitle py-4 flex justify-center text-[15px] text-gray-500 mt-8">
+        <p className="mb-2">© 2025 Kwon Haejin. All rights reserved.</p>       
+      </footer>
+
 
     </div>
+
   );
 }
 
