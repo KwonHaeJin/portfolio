@@ -320,8 +320,9 @@ function App() {
               <div
                 key={index}
                 onClick={() => setOpenPopup(index)}
-                className="cursor-pointer relative flex flex-col items-center justify-start pt-3 md:pt-4 bg-white rounded-lg 
-                w-[90vw] min-h-[27vh] md:w-[42vw] md:min-h-[32vh] xl:w-[22vw] xl:min-h-[42vh] hover:shadow-lg transition"
+                className="cursor-pointer relative flex flex-col items-center justify-start pt-3 md:pt-4 bg-white rounded-lg
+w-[90vw] min-h-[32vh] md:w-[42vw] md:min-h-[32vh] xl:w-[22vw] xl:h-[42vh] hover:shadow-lg transition"
+
 
               >
                 <div className="flex items-center justify-center text-base md:text-2xl lg:text-3xl xl:text-xl bg-orange-500 text-white font-empha 
@@ -522,7 +523,7 @@ function App() {
         </Projectpopup>
       ))}
       <footer className="w-full bg-[#F9F2ED] font-subtitle py-4 flex justify-center text-[15px] text-gray-500 mt-8">
-        <p className="mb-2">© 2025 Kwon Haejin. All rights reserved.</p>       
+        <p className="mb-2">© 2025 Kwon Haejin. All rights reserved.</p>
       </footer>
 
 

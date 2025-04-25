@@ -2,6 +2,7 @@ import EMOD from "./images/EMOD.png";
 import HOMEP from "./images/myhomepp.png";
 import port from "./images/portfolio.png";
 import SB from "./images/studybuddy.png";
+import GRN from "./images/greening.png";
 import EMOD2 from "./images/emod1.png";
 import EWOOTZ1 from "./images/ewootz_1.png";
 import EWOOTZ2 from "./images/ewootz_2.gif";
@@ -132,7 +133,7 @@ export const projectData = [
     imgsrc: EMOD,
     description: [
       <Preview className="hidden xl:flex">2023.08.01 ~ 2024.07.15</Preview>,
-      <Preview className="hidden md:flex">5인 팀 프로젝트</Preview>,
+      <Preview>5인 팀 프로젝트</Preview>,
       <Preview>일기 작성 및 공유 App</Preview>,
       <Preview>어플 디자인, 캘린더, Graph, 카카오 로그인, API 연결 등 담당</Preview>,
     ],
@@ -187,7 +188,7 @@ export const projectData = [
     imgsrc: HOMEP,
     description: [
       <Preview className="hidden xl:flex">2024.07.02 ~ 2024.09.14</Preview>,
-      <Preview className="hidden md:flex">4인 팀 프로젝트</Preview>,
+      <Preview>4인 팀 프로젝트</Preview>,
       <Preview>미니홈피 리메이킹 Web</Preview>,
       <Preview>화면 디자인, API 연결, 로그인 및 회원가입 등 담당</Preview>,
     ],
@@ -264,7 +265,7 @@ export const projectData = [
 
     description: [
       <Preview className="hidden xl:flex">2024.09.13 ~ 2024.12.13</Preview>,
-      <Preview className="hidden md:flex">2인 팀 프로젝트</Preview>,
+      <Preview>2인 팀 프로젝트</Preview>,
       <Preview>학습을 돕는 Web App</Preview>,
       <Preview>API 연결, WebView, 전체 화면 구현 등 담당</Preview>,
     ],
@@ -319,7 +320,7 @@ export const projectData = [
   {
     title: 'Portfolio',
     imgsrc: port,
-    stack: ['React TypeScript', 'TailwindCSS'],
+    stack: ['React TypeScript TailwindCSS'],
     detailStack: ['React','TypeScript', 'TailwindCSS','VScode'],
     description: [
       <Preview className="hidden xl:flex">2025.02.09 ~ 2025.04.08</Preview>,
@@ -341,5 +342,25 @@ export const projectData = [
       <Paragraph>개발을 진행하며 <Emphas text="재사용 가능한 컴포넌트"/>를 만드는 것이 중요하다는 것을 느낄 수 있었습니다. <Emphas text="반복되는 UI 요소들을 구조화"/>하며 <Emphas text="코드의 일관성과 유지보수성"/>이 얼마나 향상되는지를 직접 경험할 수 있었습니다.</Paragraph>,
       <Paragraph>무엇보다 이번 프로젝트는 웹 개발에 그치지 않고 <Emphas text="‘어떻게 하면 나를 더 잘 표현할 수 있을까’" />에 대해 고민하는 시간이 되기도 했습니다. 개발 역량뿐만 아니라 개발자로서의 나를 <Emphas text="스스로 돌아보는 계기" />가 되었습니다.</Paragraph>
     ],
-  }
+  },
+  {
+    title: 'Greening',
+    stack: ['Next.js Typescript Tailwindcss'],
+    detailStack: ['Next.js', 'Typescript', 'Tailwindcss', 'VScode', 'Swagger', 'Figma'],
+    imgsrc: GRN,
+    description: [
+      <Preview className="hidden xl:flex">2025.03.30 ~ 진행중</Preview>,
+      <Preview>6인 팀 프로젝트</Preview>,
+      <Preview>식물러들의 커뮤니티 플랫폼</Preview>,
+      <Preview> Main, Community, 카카오, 구글 로그인 등 담당</Preview>,
+    ],
+    onePoint: 'MBTI 식물 유형 테스트, 커뮤니티 소통이 가능한 웹 기반 식물 플랫폼',
+    githubLink: 'https://github.com/SWYP-9th-Team5/FE.git',
+    overview: [
+      <Detail>반려식물에 대한 관심 증가</Detail>,
+      <Detail>다양한 직군과의 협업 경험</Detail>,
+      <Detail>실제 운영하는 사이트 제작</Detail>,
+      <Overview text="식물에 관심있는 사람들을 위한 커뮤니티 웹" />
+    ],
+  },
 ];
