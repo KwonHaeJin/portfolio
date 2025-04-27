@@ -333,7 +333,7 @@ export const projectData = [
       <Overview text="나를 소개하는 포트폴리오 웹사이트를 구현" />
 
     ], discription2: [
-      <Detail>FullPage 스크롤 및 다양한 motion 사용</Detail>,
+      <Detail>스크롤 위치에 따른 다양한 motion 사용</Detail>,
       <Detail>TailwindCSS를 통한 반응형 화면 구현</Detail>,
     ],
     feedback: [
