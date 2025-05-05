@@ -11,10 +11,7 @@ import Profile from "./images/profile.jpg";
 import Name from "./images/name.png";
 import Birth from "./images/cake.png";
 import Down from "./images/arrow-down.png";
-
-function Emphas({ text }: { text: string }) {
-  return <span className="text-[#328E6E] font-semibold">{text}</span>;
-}
+import { Emphas, Advantage, SectionTitle, ProjectIconTitle } from "./components";
 
 function App() {
   const [visibleMessages, setVisibleMessages] = useState<string[]>([]);
@@ -115,10 +112,11 @@ function App() {
             </div>
           </div>
           <div className="flex-col flex justify-start items-start">
-            <div className="flex flex-row items-center pb-6 md:mb-0 lg:mb-4 xl:mb-10">
-              <p className="text-xl font-subtitle md:text-4xl lg:text-4xl xl:text-[36px] ">Contact</p>
-              <span className="ml-2 w-[61vw] h-[1px] bg-black md:w-[66vw] lg:w-[67vw] xl:w-[38vw] xl:h-[2px]"></span>
-            </div>
+            <SectionTitle
+              title="Contact"
+              underlineClass="w-[61vw] md:w-[66vw] lg:w-[67vw] xl:w-[38vw]"
+              containerClass="pb-6 md:mb-0 lg:mb-4 xl:mb-10"
+            />
             <div className="bg-white rounded-lg w-[82vw] p-2 md:p-4 xl:w-[49vw]">
               {contactInfo.map((item, index) => (
                 <div key={index} className="flex flex-row xl:justify-between xl:mx-5">
@@ -147,29 +145,24 @@ function App() {
           animate={profile.inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
           transition={{ duration: 1 }}
           className="flex flex-col xl:w-[46vw] items-center xl:items-start">
-          <p className="flex flex-row items-center justify-start w-full pb-6 font-subtitle text-xl md:text-4xl md:mb-4 lg:text-4xl xl:mb-20 xl:text-[36px]">
-            Advantage
-            <span className="ml-2 w-[53vw] h-[1px] bg-black md:w-[59vw] lg:w-[62vw] xl:w-[40vw] xl:h-[2px]"></span>
-          </p>
+          <SectionTitle
+            title="Advantage"
+            underlineClass="w-[53vw] md:w-[59vw] lg:w-[62vw] xl:w-[40vw]"
+            containerClass="pb-6 w-full justify-start xl:mb-20"
+          />
           <div className="bg-white rounded-lg w-[83vw] flex flex-col items-start justify-start px-1 py-2 md:p-2 xl:w-[46vw]">
-            <div className="mb-2 flex flex-row md:mt-4">
-              <p className="text-[16px] md:text-3xl lg:text-4xl xl:text-[20px]">🧐</p>
-              <p className="font-empha text-[16px] ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[20px]">
-                <Emphas text="세심" />하고 <Emphas text="침착" />한 성격을 바탕으로 작은 <Emphas text="디테일" />까지 놓치지 않습니다.</p>
-            </div>
-            <div className="mb-2 flex flex-row md:flex-row lg:flex-row">
-              <p className="text-[16px] md:text-3xl lg:text-4xl xl:text-[20px]">🏃</p>
-              <p className="font-empha text-[16px] ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[20px]">
-                새로운 것을 <Emphas text="배우는 속도" />가 빠르며<Emphas text=" 도전" />하는 데 두려움이 없습니다.</p>
-            </div>
-            <div className="mb-2 flex flex-row md:flex-row lg:flex-row">
-              <p className="text-[16px] md:text-3xl lg:text-4xl xl:text-[20px]">👌</p>
-              <p className="font-empha text-[16px] ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-8 xl:text-[20px]">어려운 문제도 <Emphas text="끈기" />를 가지고 끝까지 해결하려고 노력합니다.</p>
-            </div>
-            <div className="flex flex-row md:flex-row lg:flex-row">
-              <p className="text-[16px] md:text-3xl lg:text-4xl xl:text-[20px]">👂</p>
-              <p className="font-empha text-[16px] ml-2 mb-1 md:text-3xl md:mb-6 lg:text-4xl xl:mb-4 xl:text-[20px]">상대방의 말에 귀 기울이고 본인의 의견을 명확하게 전달할 수 있는 <Emphas text="커뮤니케이션" /> 능력을 갖추고 있습니다.</p>
-            </div>
+            <Advantage emoji="🧐">
+              <Emphas text="세심" />하고 <Emphas text="침착" />한 성격을 바탕으로 작은 <Emphas text="디테일" />까지 놓치지 않습니다.
+            </Advantage>
+            <Advantage emoji="🏃">
+              새로운 것을 <Emphas text="배우는 속도" />가 빠르며 <Emphas text="도전" />하는 데 두려움이 없습니다.
+            </Advantage>
+            <Advantage emoji="👌">
+              어려운 문제도 <Emphas text="끈기" />를 가지고 끝까지 해결하려고 노력합니다.
+            </Advantage>
+            <Advantage emoji="👂" bottomMargin="mb-0 xl:mb-4">
+              상대방의 말에 귀 기울이고 본인의 의견을 명확하게 전달할 수 있는 <Emphas text="커뮤니케이션" /> 능력을 갖추고 있습니다.
+            </Advantage>
           </div>
         </motion.div>
       </section>
@@ -199,10 +192,11 @@ function App() {
           transition={{ duration: 1 }}
           className="xl:w-1/3">
           <div className="flex-col flex justify-start items-start">
-            <div className="flex flex-row items-center pb-3 md:mb-4 lg:mb-8 xl:mb-16">
-              <p className="text-xl font-subtitle md:text-4xl">Certificate</p>
-              <span className="ml-2 w-[54vw] h-[1px] bg-black md:w-[56vw] xl:w-[16vw] xl:h-[2px]"></span>
-            </div>
+            <SectionTitle
+              title="Certificate"
+              underlineClass="w-[54vw] md:w-[56vw] xl:w-[16vw]"
+              containerClass="pb-3 md:mb-4 lg:mb-8 xl:mb-16"
+            />
             <div className="bg-white rounded-lg w-[82vw] pl-4 pt-2 md:pt-4 xl:pt-6 xl:w-[30vw]">
               {certificates.map((cert, index) => (
                 <div key={index} className="flex flex-row md:flex-row lg:flex-row">
@@ -236,10 +230,11 @@ function App() {
           }
           transition={{ duration: 1 }}
           className="xl:w-1/3">
-          <div className="flex flex-row items-center pb-3 md:mb-4 lg:mb-8 xl:mb-16">
-            <p className="text-xl font-subtitle md:text-4xl">Skills</p>
-            <span className="ml-2 w-[68vw] h-[1px] bg-black lg:w-[72vw] xl:h-[2px] xl:w-[24vw]"></span>
-          </div>
+          <SectionTitle
+            title="Skills"
+            underlineClass="w-[68vw] lg:w-[72vw] xl:w-[24vw]"
+            containerClass="pb-3 md:mb-4 lg:mb-8 xl:mb-16"
+          />
           {skills.map((group, index) => (
             <div key={index} className="flex flex-wrap gap-2 md:gap-4 xl:gap-2 items-start justify-start w-[82vw] mt-2 xl:w-[31vw]">
               {group.skills.map((skill, idx) => (
@@ -278,10 +273,11 @@ function App() {
           transition={{ duration: 1 }}
           className="xl:w-1/3">
           <div className="flex-col flex justify-start items-start">
-            <div className="flex flex-row items-center pb-3 md:mb-4 lg:mb-8 xl:mb-16">
-              <p className="text-xl font-subtitle md:text-4xl ">Education</p>
-              <span className="ml-2 w-[56vw] h-[1px] bg-black md:w-[58vw] lg:w-[62vw] xl:h-[2px] xl:w-[18vw]"></span>
-            </div>
+            <SectionTitle
+              title="Education"
+              underlineClass="w-[56vw] md:w-[58vw] lg:w-[62vw] xl:w-[18vw]"
+              containerClass="pb-3 md:mb-4 lg:mb-8 xl:mb-16"
+            />
             <div className="bg-white rounded-lg w-[82vw] pl-4 pt-2 md:pt-4 md:pb-2 xl:w-[31vw]">
               {education.map((edu, index) => (
                 <div key={index} className="mb-2 target:mb-4 md:mb-4">
@@ -306,7 +302,8 @@ function App() {
             <span className="mr-2 w-[34vw] h-[1px] bg-black xl:h-[2px] xl:w-[35vw]"></span>
             <p className="text-xl font-subtitle md:text-4xl">Projects</p>
             <span className="ml-2 w-[34vw] h-[1px] bg-black xl:h-[2px] xl:w-[35vw]"></span>
-          </div></motion.div>
+          </div>
+        </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={projects.inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
@@ -321,10 +318,8 @@ function App() {
                 key={index}
                 onClick={() => setOpenPopup(index)}
                 className="cursor-pointer relative flex flex-col items-center justify-start pt-3 md:pt-4 bg-white rounded-lg
-w-[90vw] min-h-[32vh] md:w-[42vw] md:min-h-[32vh] xl:w-[22vw] xl:h-[42vh] hover:shadow-lg transition"
+w-[90vw] min-h-[32vh] md:w-[42vw] md:min-h-[32vh] xl:w-[22vw] xl:h-[42vh] hover:shadow-lg transition">
 
-
-              >
                 <div className="flex items-center justify-center text-base md:text-2xl lg:text-3xl xl:text-xl bg-orange-500 text-white font-empha 
             w-[85vw] h-6 mb-2 md:w-[32vw] md:h-8 lg:h-10 xl:w-52 xl:h-9 rounded-lg xl:mb-4">
                   {project.title}
@@ -371,12 +366,12 @@ w-[90vw] min-h-[32vh] md:w-[42vw] md:min-h-[32vh] xl:w-[22vw] xl:h-[42vh] hover:
           imgsrc={project?.imgsrc}>
 
           <div className="flex flex-col mt-2 mb-3">
-            <p className="font-empha text-[20px] whitespace-nowrap mr-1 md:text-[30px]">🙌 소개</p>
+            <ProjectIconTitle icon="🙌" text="소개" />
             <p className="text-[16px] break-words md:text-[24px]">{project.onePoint}</p>
           </div>
 
           <div className="flex flex-col mt-2 mb-3">
-            <p className="font-empha text-[20px] whitespace-nowrap mr-1 md:text-[30px]">🛠️ 기술 스택</p>
+            <ProjectIconTitle icon="🛠️" text="기술 스택" />
             <div className="flex flex-wrap gap-2 text-[16px] md:text-[24px]">
               {project.detailStack.map((line, i) => (
                 <span
@@ -390,7 +385,7 @@ w-[90vw] min-h-[32vh] md:w-[42vw] md:min-h-[32vh] xl:w-[22vw] xl:h-[42vh] hover:
           </div>
 
           <div className="flex flex-col mt-2 mb-3">
-            <p className="font-empha text-[20px] whitespace-nowrap mr-1 md:text-[30px]">🔗 Github</p>
+            <ProjectIconTitle icon="🔗" text="Github" />
             <a
               href={project.githubLink}
               target="_blank"
@@ -402,7 +397,7 @@ w-[90vw] min-h-[32vh] md:w-[42vw] md:min-h-[32vh] xl:w-[22vw] xl:h-[42vh] hover:
           </div>
 
           <div className="flex flex-col mt-2 mb-3">
-            <p className="font-empha text-[20px] md:text-[30px] md:mb-2">🧩 프로젝트 개요</p>
+            <ProjectIconTitle icon="🧩" text="프로젝트 개요" />
             <div className="text-[16px] flex flex-col gap-[10px] md:text-[24px] md:gap-[15px]">
               {project.overview.map((line, i) => (
                 <div key={i} className="leading-7">{line}</div>
@@ -410,8 +405,7 @@ w-[90vw] min-h-[32vh] md:w-[42vw] md:min-h-[32vh] xl:w-[22vw] xl:h-[42vh] hover:
             </div>
           </div>
 
-          <div className="font-empha text-[20px] xl:mt-6 md:text-[30px] md:mb-2">🗂️ 프로젝트 설명</div>
-
+          <ProjectIconTitle icon="🗂️" text="프로젝트 설명" />
           {project.youtubeLink && (
             <>
               <div className="text-base text-[14px] md:text-[20px]">• 캡스톤 프로젝트(1) 데모영상</div>
@@ -501,7 +495,7 @@ w-[90vw] min-h-[32vh] md:w-[42vw] md:min-h-[32vh] xl:w-[22vw] xl:h-[42vh] hover:
 
           {project.responsibility && (
             <div className="mt-4">
-              <div className="font-empha text-[20px] md:text-[30px]">🙋‍♀️ 담당한 기능</div>
+              <ProjectIconTitle icon="🙋‍♀️" text="담당한 기능" />
               <div className="flex flex-col gap-[10px] md:gap-[13px] mt-1">
                 {project.responsibility.map((line, i) => (
                   <div key={i} className="text-[16px] leading-5 md:leading-8">{line}</div>
@@ -512,7 +506,7 @@ w-[90vw] min-h-[32vh] md:w-[42vw] md:min-h-[32vh] xl:w-[22vw] xl:h-[42vh] hover:
 
           {project.feedback && (
             <>
-              <div className="font-empha text-[20px] mt-5 mb-2 md:text-[30px]">✍️ 느낀점</div>
+              <ProjectIconTitle icon="✍️" text="느낀점" />
               <div className="flex flex-col gap-[12px] md:gap-[15px]">
                 {project.feedback.map((line, i) => (
                   <div key={i} className="text-[16px] leading-6 md:leading-9">{line}</div>
@@ -525,10 +519,7 @@ w-[90vw] min-h-[32vh] md:w-[42vw] md:min-h-[32vh] xl:w-[22vw] xl:h-[42vh] hover:
       <footer className="w-full bg-[#F9F2ED] font-subtitle py-4 flex justify-center text-[15px] text-gray-500 mt-8">
         <p className="mb-2">© 2025 Kwon Haejin. All rights reserved.</p>
       </footer>
-
-
     </div>
-
   );
 }
 
